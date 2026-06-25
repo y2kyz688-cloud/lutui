@@ -1,0 +1,53 @@
+name: Daily Financial Briefing
+
+on:
+  schedule:
+    # 北京时间 7:30 = UTC 23:30（前一天）
+    # GitHub Actions cron使用UTC时间
+    - cron: '30 23 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate-briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch market data
+        run: node scripts/fetch-data.js
+
+      - name: Generate AI interpretation
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_API: claude
+        run: node scripts/ai-interpret.js
+
+      - name: Render HTML pages
+        run: node scripts/render-html.js
+
+      - name: Update archive index
+        run: node scripts/update-archive.js
+
+      - name: Commit data files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ dist/ -f
+          git diff --staged --quiet || git commit -m "auto: daily briefing $(date +%Y-%m-%d)"
+          git push
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true

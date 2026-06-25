@@ -1,0 +1,15 @@
+{
+  "name": "daily-financial-briefing",
+  "version": "1.0.0",
+  "description": "每日全球财经简报网站 - 面向A股散户的自动更新财经解读平台",
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch-data.js",
+    "interpret": "node scripts/ai-interpret.js",
+    "render": "node scripts/render-html.js",
+    "archive": "node scripts/update-archive.js",
+    "full": "node scripts/fetch-data.js && node scripts/ai-interpret.js && node scripts/render-html.js && node scripts/update-archive.js"
+  },
+  "keywords": ["finance", "stock", "briefing", "a-share"],
+  "license": "MIT"
+}
