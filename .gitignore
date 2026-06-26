@@ -1,7 +1,5 @@
 node_modules/
 .env
-data/raw_*.json
-data/interpret_*.json
 dist/daily/*.html
 dist/index.html
 dist/archive.html

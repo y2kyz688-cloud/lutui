@@ -321,10 +321,11 @@ ${r.a_stock_review ? `
   ${r.a_stock_review.limit_up_down ? `<p style="margin-top:6px">${escWithBr(r.a_stock_review.limit_up_down)}</p>` : ''}
 </div>` : ''}
 
-<!-- 三个行业深度 -->
+<!-- 四个行业深度 -->
 ${renderIndustryBlock('AI 人工智能板块深度解读', r.ai_deep)}
 ${renderIndustryBlock('具身智能机器人板块深度解读', r.robot_deep)}
 ${renderIndustryBlock('有色金属（上游）板块深度解读', r.metal_deep)}
+${renderIndustryBlock('电力设备与新能源板块深度解读', r.power_deep)}
 
 <!-- 明日预览 -->
 ${r.tomorrow_preview ? `

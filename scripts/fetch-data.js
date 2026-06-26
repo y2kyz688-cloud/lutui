@@ -365,12 +365,17 @@ async function main() {
     sh601899: '1.601899', sh600111: '1.600111', sz002466: '0.002466',
     sh603799: '1.603799', sz000807: '0.000807', sh601168: '1.601168', sz002460: '0.002460',
   };
-  const allAStocks = { ...aiStocks, ...robotStocks, ...metalStocks };
+  const powerStocks = {
+    sz300750: '0.300750', sz002594: '0.002594', sz300274: '0.300274',
+    sh601012: '1.601012', sh600406: '1.600406', sh600089: '1.600089', sh600438: '1.600438',
+  };
+  const allAStocks = { ...aiStocks, ...robotStocks, ...metalStocks, ...powerStocks };
 
   // 美股代码
   const usAiLeaders = ['NVDA', 'TSM', 'MU', 'MSFT', 'GOOGL', 'META', 'AMD', 'AVGO', 'INTC'];
   const usMetalLeaders = ['FCX', 'AA', 'BHP', 'ALB'];
   const usRobotLeaders = ['TSLA'];
+  const usPowerLeaders = ['SIEGY', 'ABBNY', 'SBGSY', 'GE', 'NEE', 'FSLR', 'ENPH'];
   const usIndices = { djia: '^DJI', nasdaq: '^IXIC', sp500: '^GSPC' };
 
   // 并发执行所有数据采集
@@ -386,6 +391,7 @@ async function main() {
     usAiResults,
     usMetalResults,
     usRobotResults,
+    usPowerResults,
     forex,
     commodities,
   ] = await Promise.all([
@@ -400,16 +406,18 @@ async function main() {
     Promise.all(usAiLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
     Promise.all(usMetalLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
     Promise.all(usRobotLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
+    Promise.all(usPowerLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
     fetchForex(),
     fetchCommodities(),
   ]);
 
   // 组装行业A股数据
-  const aiA = {}, robotA = {}, metalA = {};
+  const aiA = {}, robotA = {}, metalA = {}, powerA = {};
   for (const [k, v] of Object.entries(aShareStocks)) {
     if (aiStocks[k]) aiA[k] = v;
     if (robotStocks[k]) robotA[k] = v;
     if (metalStocks[k]) metalA[k] = v;
+    if (powerStocks[k]) powerA[k] = v;
   }
 
   const rawData = {
@@ -423,6 +431,7 @@ async function main() {
       industry_policy_ai: { value: null, note: '需搜索补充', confidence: '❌' },
       industry_policy_robot: { value: null, note: '需搜索补充', confidence: '❌' },
       industry_policy_metals: { value: null, note: '需搜索补充', confidence: '❌' },
+        industry_policy_power: { value: null, note: '需搜索补充', confidence: '❌' },
     },
     capital: {
       northbound,
@@ -441,6 +450,7 @@ async function main() {
       ai_leaders: usAiResults,
       metal_leaders: usMetalResults,
       robot_leaders: usRobotResults,
+      power_leaders: usPowerResults,
     },
     forex_commodity: {
       ...forex,
@@ -450,6 +460,7 @@ async function main() {
       ai: aiA,
       robot: robotA,
       metal: metalA,
+      power: powerA,
     },
     commodity_detail: {
       copper_price: commodities.copper?.close || null,
