@@ -386,6 +386,43 @@ function getMacroData() {
 // 新闻事件（RSS+搜索摘要，由AI补充解读）
 // ============================================================
 
+// 获取指定行业板块指数（用于板块级别的分析，而非个股代表板块）
+async function fetchSectorIndices() {
+  const sectorCodes = {
+    semiconductor: '90.BK1036',    // 半导体
+    ai_chip: '90.BK1127',          // AI芯片
+    computing: '90.BK1134',         // 算力概念
+    robot: '90.BK1090',             // 机器人概念
+    nonferrous: '90.BK0478',        // 有色金属
+    power_equipment: '90.BK1200',   // 电力设备
+    grid: '90.BK0457',              // 电网设备
+    solar: '90.BK1031',             // 光伏设备
+    battery: '90.BK0574',           // 锂电池概念
+    rare_earth: '90.BK0578',        // 稀土永磁
+  };
+  const secids = Object.values(sectorCodes).join(',');
+  const url = `https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f4,f12,f14&secids=${secids}&_=${Date.now()}`;
+  const data = await fetchJsonParsed(url);
+  if (!data?.data?.diff) return {};
+
+  const nameMap = Object.fromEntries(Object.entries(sectorCodes).map(([k, v]) => [v.replace('90.', ''), k]));
+  const result = {};
+  for (const item of data.data.diff) {
+    const key = nameMap[item.f12] || item.f12;
+    const changePct = item.f3;
+    const volume = item.f4;
+    result[key] = {
+      name: item.f14,
+      index_value: item.f2,
+      change_pct: changePct,
+      volume: volume,
+      source: '东方财富板块指数API',
+      fetched_at: ts(),
+    };
+  }
+  return result;
+}
+
 function getNewsPlaceholder() {
   return [
     { title: '（新闻事件由AI搜索补充）', source: 'WebSearch', date: today(), summary: '请在AI解读阶段通过搜索补充当日重大财经新闻' },
@@ -443,6 +480,7 @@ async function main() {
     usStocksYahoo,
     usIdxEastMoney,
     usStocksEastMoney,
+    sectorIndices,
     forex,
     commodities,
   ] = await Promise.all([
@@ -457,9 +495,11 @@ async function main() {
     Promise.all([...usAiLeadersEM, ...usRobotLeaders, ...usPowerLeadersEM, ...Object.keys(usAiLeadersManual), ...usMetalLeaders, ...usPowerLeadersManual].map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
     fetchEastMoneyIndices(),
     fetchEastMoneyUS([...usAiLeadersEM, ...usRobotLeaders, ...usPowerLeadersEM, ...Object.values(usAiLeadersManual)]),
+    fetchSectorIndices(),
     fetchForex(),
     fetchCommodities(),
   ]);
+
 
   // 合并美股数据：东方财富优先，Yahoo备用
   function mergeUS(primary, fallback) {
@@ -540,6 +580,7 @@ async function main() {
       metal: metalA,
       power: powerA,
     },
+    sector_indices: sectorIndices,
     commodity_detail: {
       copper_price: commodities.copper?.close || null,
       aluminum_price: commodities.aluminum?.close || null,

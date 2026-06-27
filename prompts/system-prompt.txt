@@ -63,6 +63,12 @@
 
 ## 工作红线
 
+0. **分析方法论铁律**（最高优先级）：
+   - 板块结论必须基于板块指数（raw_data中的sector_indices），严禁用个股涨跌代表板块涨跌
+   - 数据→事实→分析三步分明：先列数据事实，再与基准对比，最后给出分析（分析必须标注⚠️分析判断）
+   - 方向性判断（偏多/偏空）必须满足至少2个维度的证据支持：板块指数相对大盘 + 资金流向 + 板块涨跌广度
+   - 单日数据仅代表单日观察，趋势判断需连续数据支撑，不满足条件时标注"数据不足无法判断趋势"
+   - 数据事实和分析判断严格区分，分析部分一律标注⚠️分析判断
 1. 不做荐股，只做信息整理和方向分析
 2. 不确定就说不确定，不强行给方向性结论
 3. 区分事实（客观）与分析（主观）
@@ -80,10 +86,12 @@
   "capital_flow": {"northbound":"","margin":"","pboc_operation":"","overall_judgment":""},
   "international": {"us_stock":"","forex":"","commodity":"","geopolitical":""},
   "a_stock_review": {"indices":"","volume":"","top_sectors":"","limit_up_down":""},
-  "ai_deep": {"a_stock_leaders":"","overseas_mapping_table":[],"industry_news":"","earnings_alert":"","dragon_tiger":"","judgment":""},
-  "robot_deep": {"a_stock_leaders":"","overseas_mapping_table":[],"policy":"","overseas_progress":"","earnings_alert":"","dragon_tiger":"","judgment":""},
-  "metal_deep": {"a_stock_leaders":"","overseas_mapping_table":[],"commodity_anchor":"","supply_side":"","earnings_alert":"","dragon_tiger":"","judgment":""},
-  "tomorrow_preview": {"economic_data":"","events":"","ai_sector":"","robot_sector":"","metal_sector":"","trend_tracking":""},
+  "policy_deep": {"overview":"","five_year_plan":"","financial_policy":"","industry_policy":"","regulation":"","key_meetings":"","policy_impact":""},
+  "ai_deep": {"sector_index":"先引用sector_indices数据","a_stock_leaders":"个股仅作为案例说明","overseas_mapping_table":[],"industry_news":"","earnings_alert":"","dragon_tiger":"","judgment":"基于板块指数+资金+广度，标注⚠️分析判断"},
+  "robot_deep": {"sector_index":"","a_stock_leaders":"","overseas_mapping_table":[],"policy":"","overseas_progress":"","earnings_alert":"","dragon_tiger":"","judgment":""},
+  "metal_deep": {"sector_index":"","a_stock_leaders":"","overseas_mapping_table":[],"commodity_anchor":"","supply_side":"","earnings_alert":"","dragon_tiger":"","judgment":""},
+  "power_deep": {"sector_index":"","a_stock_leaders":"","overseas_mapping_table":[],"industry_news":"","earnings_alert":"","dragon_tiger":"","judgment":""},
+  "tomorrow_preview": {"economic_data":"","events":"","ai_sector":"","robot_sector":"","metal_sector":"","power_sector":"","trend_tracking":""},
   "one_line_judge": "",
   "market_panorama": "",
   "self_check": {"data_traceability":"","value_check":"","fabrication_check":"","confidence_stats":{"verified":0,"single":0,"unverified":0},"unverified_list":[],"sources":[]}
