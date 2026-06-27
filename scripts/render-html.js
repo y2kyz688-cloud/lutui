@@ -580,7 +580,7 @@ function renderDailyHTML(date, rawData, interpret) {
     <div class="meta-item"><span class="label">报告日期</span> <span class="value">${esc(date)}</span></div>
     <div class="meta-item"><span class="label">覆盖市场</span> <span class="value">A股 / 美股 / 港股 / 外汇 / 大宗商品</span></div>
     <div class="meta-item"><span class="label">数据来源</span> <span class="value">东方财富 / Yahoo Finance / 新浪财经</span></div>
-    <div class="meta-item"><span class="label">更新频率</span> <span class="value">每日 7:30 (北京时间)</span></div>
+    <div class="meta-item"><span class="label">更新频率</span> <span class="value">每日 6:30 (北京时间)</span></div>
   </div>
 </header>
 
@@ -629,6 +629,19 @@ ${r.macro_policy ? `
   ${r.macro_policy.china ? `<p><strong>中国：</strong>${escWithBr(r.macro_policy.china)}</p>` : ''}
   ${r.macro_policy.overseas ? `<p style="margin-top:8px"><strong>海外：</strong>${escWithBr(r.macro_policy.overseas)}</p>` : ''}
   ${r.macro_policy.signal_conflict ? `<div class="conflict-box"><strong>⚠️ 信号矛盾：</strong>${escWithBr(r.macro_policy.signal_conflict)}</div>` : ''}
+</div>` : ''}
+
+<!-- 政策与规划 -->
+${r.policy_deep ? `
+<div class="card priority-high">
+  <h2>政策与规划解读 <span class="tag tag-red">高优先级</span></h2>
+  ${r.policy_deep.overview ? `<p>${escWithBr(r.policy_deep.overview)}</p>` : ''}
+  ${r.policy_deep.five_year_plan ? `<p style="margin-top:8px"><strong>十五五规划：</strong>${escWithBr(r.policy_deep.five_year_plan)}</p>` : ''}
+  ${r.policy_deep.financial_policy ? `<p style="margin-top:8px"><strong>金融政策：</strong>${escWithBr(r.policy_deep.financial_policy)}</p>` : ''}
+  ${r.policy_deep.industry_policy ? `<p style="margin-top:8px"><strong>产业政策：</strong>${escWithBr(r.policy_deep.industry_policy)}</p>` : ''}
+  ${r.policy_deep.regulation ? `<p style="margin-top:8px"><strong>监管动态：</strong>${escWithBr(r.policy_deep.regulation)}</p>` : ''}
+  ${r.policy_deep.key_meetings ? `<p style="margin-top:8px"><strong>重要会议：</strong>${escWithBr(r.policy_deep.key_meetings)}</p>` : ''}
+  ${r.policy_deep.policy_impact ? `<div class="conflict-box"><strong>政策影响研判：</strong>${escWithBr(r.policy_deep.policy_impact)}</div>` : ''}
 </div>` : ''}
 
 <!-- 资金面 -->
