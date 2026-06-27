@@ -552,6 +552,9 @@ function renderDailyHTML(date, rawData, interpret) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="description" content="${esc(date)} 全球财经每日简报 - A股/美股/外汇/期货市场解读">
 <title>${esc(date)} 全球财经每日简报</title>
 <style>${CSS}</style>
@@ -737,6 +740,9 @@ function renderAboutHTML() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>关于 - 全球财经每日简报</title>
 <style>${CSS}</style>
 </head>

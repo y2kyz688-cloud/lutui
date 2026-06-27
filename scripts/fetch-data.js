@@ -229,7 +229,7 @@ async function fetchMarketVolume() {
 }
 
 // ============================================================
-// 美股数据采集（Yahoo Finance）
+// 美股数据采集（东方财富为主，Yahoo备用）
 // ============================================================
 
 async function fetchYahooQuote(symbol) {
@@ -252,6 +252,54 @@ async function fetchYahooQuote(symbol) {
     source: 'Yahoo Finance API',
     fetched_at: ts(),
   };
+}
+
+// 东方财富美股指数
+async function fetchEastMoneyIndices() {
+  const url = `https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=100.DJIA,100.NDX,100.SPX&_=${Date.now()}`;
+  const data = await fetchJsonParsed(url);
+  if (!data?.data?.diff) return {};
+  const result = {};
+  const keyMap = { DJIA: 'djia', NDX: 'nasdaq', SPX: 'sp500' };
+  for (const item of data.data.diff) {
+    const key = keyMap[item.f12] || item.f12.toLowerCase();
+    const close = item.f2;
+    const changePct = item.f3;
+    const v = validate(item.f12, close, 100, 100000);
+    result[key] = {
+      name: item.f14 || item.f12,
+      close: v.confidence === '✅' ? v.value : close,
+      change_pct: changePct,
+      confidence: v.confidence,
+      source: '东方财富美股API',
+      fetched_at: ts(),
+    };
+  }
+  return result;
+}
+
+// 东方财富美股API（国内网络可用）
+async function fetchEastMoneyUS(symbols) {
+  const emCodes = symbols.map(s => `105.${s}`).join(',');
+  const url = `https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=${emCodes}&_=${Date.now()}`;
+  const data = await fetchJsonParsed(url);
+  if (!data?.data?.diff) return null;
+
+  const result = {};
+  for (const item of data.data.diff) {
+    const close = item.f2;
+    const changePct = item.f3;
+    const v = validate(item.f12, close, 0.01, 1e6);
+    result[item.f12] = {
+      name: item.f14 || item.f12,
+      close: v.confidence === '✅' ? v.value : close,
+      change_pct: changePct,
+      confidence: v.confidence,
+      source: '东方财富美股API',
+      fetched_at: ts(),
+    };
+  }
+  return result;
 }
 
 // ============================================================
@@ -371,12 +419,16 @@ async function main() {
   };
   const allAStocks = { ...aiStocks, ...robotStocks, ...metalStocks, ...powerStocks };
 
-  // 美股代码
-  const usAiLeaders = ['NVDA', 'TSM', 'MU', 'MSFT', 'GOOGL', 'META', 'AMD', 'AVGO', 'INTC'];
-  const usMetalLeaders = ['FCX', 'AA', 'BHP', 'ALB'];
+  // 美股代码（东方财富105.前缀适用于大部分美股，106.适用于台股ADR）
+  const usAiLeadersEM = ['NVDA', 'MU', 'MSFT', 'GOOGL', 'META', 'AMD', 'AVGO', 'INTC']; // 东方财富可获取
+  const usAiLeadersManual = { TSM: '106.TSM' }; // 需要特殊代码
+  const usMetalLeaders = ['FCX', 'AA', 'BHP', 'ALB']; // 东方财富不覆盖，需WebSearch
   const usRobotLeaders = ['TSLA'];
-  const usPowerLeaders = ['SIEGY', 'ABBNY', 'SBGSY', 'GE', 'NEE', 'FSLR', 'ENPH'];
+  const usPowerLeadersEM = ['FSLR', 'ENPH']; // 东方财富可获取
+  const usPowerLeadersManual = ['GE', 'NEE', 'SIEGY', 'ABBNY', 'SBGSY']; // ADR/特殊标的，需WebSearch
   const usIndices = { djia: '^DJI', nasdaq: '^IXIC', sp500: '^GSPC' };
+  const allUSStocksForEM = [...usAiLeadersEM, ...usRobotLeaders, ...usPowerLeadersEM];
+  const allUSStocksManual = { ...usAiLeadersManual };
 
   // 并发执行所有数据采集
   const [
@@ -387,11 +439,10 @@ async function main() {
     sectors,
     limits,
     volume,
-    usIdxResults,
-    usAiResults,
-    usMetalResults,
-    usRobotResults,
-    usPowerResults,
+    usIdxYahoo,
+    usStocksYahoo,
+    usIdxEastMoney,
+    usStocksEastMoney,
     forex,
     commodities,
   ] = await Promise.all([
@@ -403,13 +454,40 @@ async function main() {
     fetchLimitStats(),
     fetchMarketVolume(),
     Promise.all(Object.entries(usIndices).map(async ([k, sym]) => [k, await fetchYahooQuote(sym)])).then(Object.fromEntries),
-    Promise.all(usAiLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
-    Promise.all(usMetalLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
-    Promise.all(usRobotLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
-    Promise.all(usPowerLeaders.map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
+    Promise.all([...usAiLeadersEM, ...usRobotLeaders, ...usPowerLeadersEM, ...Object.keys(usAiLeadersManual), ...usMetalLeaders, ...usPowerLeadersManual].map(async s => [s, await fetchYahooQuote(s)])).then(Object.fromEntries),
+    fetchEastMoneyIndices(),
+    fetchEastMoneyUS([...usAiLeadersEM, ...usRobotLeaders, ...usPowerLeadersEM, ...Object.values(usAiLeadersManual)]),
     fetchForex(),
     fetchCommodities(),
   ]);
+
+  // 合并美股数据：东方财富优先，Yahoo备用
+  function mergeUS(primary, fallback) {
+    const result = {};
+    for (const [k, v] of Object.entries(primary)) {
+      if (v && v.confidence !== '❌') result[k] = v;
+      else if (fallback[k] && fallback[k].confidence !== '❌') result[k] = { ...fallback[k], source: fallback[k].source + '(备用)' };
+      else result[k] = v || fallback[k] || { close: null, change_pct: null, confidence: '❌', reason: '所有数据源失败' };
+    }
+    return result;
+  }
+
+  // 东方财富返回的key已是djia/nasdaq/sp500，直接合并
+  const usIdxResults = mergeUS(usIdxEastMoney, usIdxYahoo);
+  // 东方财富数据 + Yahoo备用
+  const usAiResults = mergeUS(extractBySymbols(usStocksEastMoney, [...usAiLeadersEM, ...Object.keys(usAiLeadersManual)]), usStocksYahoo);
+  const usMetalResults = mergeUS(extractBySymbols(usStocksEastMoney, usMetalLeaders), usStocksYahoo);
+  const usRobotResults = mergeUS(extractBySymbols(usStocksEastMoney, usRobotLeaders), usStocksYahoo);
+  const usPowerResults = mergeUS(extractBySymbols(usStocksEastMoney, [...usPowerLeadersEM, ...usPowerLeadersManual]), usStocksYahoo);
+
+  function extractBySymbols(data, symbols) {
+    if (!data) return {};
+    const result = {};
+    for (const sym of symbols) {
+      result[sym] = data[sym] || { close: null, change_pct: null, confidence: '❌', reason: '数据未找到' };
+    }
+    return result;
+  }
 
   // 组装行业A股数据
   const aiA = {}, robotA = {}, metalA = {}, powerA = {};
@@ -487,7 +565,7 @@ async function main() {
   }
   console.log(`A股指数: ${successCount}成功, ${failCount}失败`);
   console.log(`A股个股: ${Object.values(aShareStocks).filter(v => v.confidence !== '❌').length}/${Object.keys(aShareStocks).length}`);
-  console.log(`美股: ${Object.values(usIdxResults).filter(v => v.confidence !== '❌').length}指数, ${Object.values(usAiResults).filter(v => v.confidence !== '❌').length}个股`);
+  console.log(`美股: ${Object.values(usIdxResults).filter(v => v.confidence !== '❌').length}指数, ${[...Object.values(usAiResults),...Object.values(usMetalResults),...Object.values(usRobotResults),...Object.values(usPowerResults)].filter(v => v.confidence !== '❌').length}个股`);
   console.log(`外汇: ${forex.confidence}`);
   console.log(`商品: ${commodities.confidence}`);
 
