@@ -558,6 +558,13 @@ function renderDailyHTML(date, rawData, interpret) {
 <meta name="description" content="${esc(date)} 全球财经每日简报 - A股/美股/外汇/期货市场解读">
 <title>${esc(date)} 全球财经每日简报</title>
 <style>${CSS}</style>
+<script>
+// 强制刷新检测：如果页面版本与当前日期不匹配，自动刷新
+(function(){
+  var v='${esc(date)}-${Date.now()}';
+  if(localStorage.getItem('briefing_v')!==v){ localStorage.setItem('briefing_v',v); if(!sessionStorage.getItem('loaded')){ sessionStorage.setItem('loaded','1'); location.reload(true); } }
+})();
+</script>
 </head>
 <body>
 
@@ -580,7 +587,7 @@ function renderDailyHTML(date, rawData, interpret) {
     <div class="meta-item"><span class="label">报告日期</span> <span class="value">${esc(date)}</span></div>
     <div class="meta-item"><span class="label">覆盖市场</span> <span class="value">A股 / 美股 / 港股 / 外汇 / 大宗商品</span></div>
     <div class="meta-item"><span class="label">数据来源</span> <span class="value">东方财富 / Yahoo Finance / 新浪财经</span></div>
-    <div class="meta-item"><span class="label">更新频率</span> <span class="value">每日 6:30 (北京时间)</span></div>
+    <div class="meta-item"><span class="label">更新时间</span> <span class="value" id="renderTime">${new Date().toISOString()}</span></div>
   </div>
 </header>
 
