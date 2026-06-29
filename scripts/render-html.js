@@ -856,12 +856,29 @@ async function main() {
   if (existsSync(rawPath)) rawData = JSON.parse(readFileSync(rawPath, 'utf-8'));
   else if (existsSync(rawLatestPath)) rawData = JSON.parse(readFileSync(rawLatestPath, 'utf-8'));
 
-  if (existsSync(interpPath)) interpret = JSON.parse(readFileSync(interpPath, 'utf-8'));
-  else if (existsSync(interpLatestPath)) interpret = JSON.parse(readFileSync(interpLatestPath, 'utf-8'));
+  if (existsSync(interpPath)) {
+    interpret = JSON.parse(readFileSync(interpPath, 'utf-8'));
+  } else if (existsSync(interpLatestPath)) {
+    const latest = JSON.parse(readFileSync(interpLatestPath, 'utf-8'));
+    // 只有当日期的解读数据才使用，否则视为无解读（避免旧解读混入新数据页面）
+    if (latest.date === date) interpret = latest;
+  }
 
   if (!rawData && !interpret) {
     console.error(`未找到${date}的数据文件，无法渲染`);
     process.exit(1);
+  }
+
+  // 如果没有interpret但有raw数据，生成数据驱动的基础解读
+  if (!interpret && rawData) {
+    interpret = {
+      date,
+      headline_events: [],
+      one_line_judge: `今日A股市场数据已更新（${date}）。深度解读待Claude Code生成。`,
+      market_panorama: `本简报为自动数据驱动版本，包含今日实时行情数据。深度解读（因果链分析、海外映射、政策解读、自检报告）将在Claude Code活跃时补充。`,
+      self_check: {confidence_stats:{verified:0,single:0,unverified:0},unverified_list:[],sources:['东方财富API自动采集']}
+    };
+    console.log('使用数据驱动基础模式（无深度解读）');
   }
 
   // 生成每日简报HTML
