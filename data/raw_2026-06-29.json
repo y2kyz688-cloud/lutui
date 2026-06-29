@@ -1,6 +1,6 @@
 {
   "date": "2026-06-29",
-  "generated_at": "2026-06-29T01:18:50.557Z",
+  "generated_at": "2026-06-29T01:36:28.182Z",
   "macro": {
     "china_cpi": {
       "value": null,
@@ -94,102 +94,102 @@
     "indices": {
       "sh000001": {
         "name": "上证指数",
-        "close": 4026.58,
-        "change_pct": -0.02,
+        "close": 4020.49,
+        "change_pct": -0.17,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.669Z"
       },
       "sz399001": {
         "name": "深证成指",
-        "close": 15782.22,
-        "change_pct": 0,
+        "close": 15846.83,
+        "change_pct": 0.41,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.669Z"
       },
       "sz399006": {
         "name": "创业板指",
-        "close": 4194.21,
-        "change_pct": 0,
+        "close": 4230.98,
+        "change_pct": 0.88,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.669Z"
       },
       "sh000688": {
         "name": "科创50",
-        "close": 2032.15,
-        "change_pct": -0.01,
+        "close": 2079.65,
+        "change_pct": 2.33,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.669Z"
       }
     },
-    "volume": "0亿",
-    "up_limit_count": 73,
+    "volume": "2亿",
+    "up_limit_count": 51,
     "down_limit_count": 0,
     "top5_up_sectors": [
       {
-        "name": "果蔬加工",
-        "code": "BK1503",
-        "change_pct": 5.28,
-        "close": 2848.73
+        "name": "氟化工",
+        "code": "BK1424",
+        "change_pct": 5.42,
+        "close": 16375.61
       },
       {
         "name": "橡胶助剂",
         "code": "BK1443",
-        "change_pct": 5,
-        "close": 5727.6
+        "change_pct": 5.16,
+        "close": 5736.57
       },
       {
         "name": "分立器件",
         "code": "BK1327",
-        "change_pct": 3.28,
-        "close": 20974.64
+        "change_pct": 4.69,
+        "close": 21260.77
       },
       {
-        "name": "其他橡胶制品",
-        "code": "BK1441",
-        "change_pct": 3.23,
-        "close": 4361.69
+        "name": "半导体设备",
+        "code": "BK1326",
+        "change_pct": 4.37,
+        "close": 65993.14
       },
       {
-        "name": "其他化学纤维",
-        "code": "BK1415",
-        "change_pct": 3.15,
-        "close": 3854.67
+        "name": "其他数字媒体",
+        "code": "BK1295",
+        "change_pct": 4.29,
+        "close": 1130.25
       }
     ],
     "top5_down_sectors": [
       {
-        "name": "空调",
-        "code": "BK1450",
-        "change_pct": 2.16,
-        "close": 14156.39
+        "name": "电子化学品Ⅱ",
+        "code": "BK1039",
+        "change_pct": 3.16,
+        "close": 4651.38
       },
       {
-        "name": "工程机械器件",
-        "code": "BK1392",
-        "change_pct": 2.69,
-        "close": 17134.19
+        "name": "电子化学品Ⅲ",
+        "code": "BK1332",
+        "change_pct": 3.16,
+        "close": 4651.38
       },
       {
-        "name": "辅料",
-        "code": "BK1348",
-        "change_pct": 2.71,
-        "close": 2672.67
+        "name": "钼",
+        "code": "BK1623",
+        "change_pct": 3.28,
+        "close": 1819.46
       },
       {
-        "name": "油田服务",
-        "code": "BK1573",
-        "change_pct": 2.87,
-        "close": 1458.9
+        "name": "半导体材料",
+        "code": "BK1325",
+        "change_pct": 3.82,
+        "close": 18409.08
       },
       {
-        "name": "橡胶",
-        "code": "BK1018",
-        "change_pct": 2.87,
-        "close": 1537.76
+        "name": "综合电力设备商",
+        "code": "BK1323",
+        "change_pct": 3.89,
+        "close": 1300.24
       }
     ]
   },
@@ -201,7 +201,7 @@
         "change_pct": -0.09,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.714Z"
       },
       "nasdaq": {
         "name": "纳斯达克",
@@ -209,7 +209,7 @@
         "change_pct": -0.24,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.714Z"
       },
       "sp500": {
         "name": "标普500",
@@ -217,7 +217,7 @@
         "change_pct": -0.05,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.714Z"
       }
     },
     "ai_leaders": {
@@ -227,7 +227,7 @@
         "change_pct": -1.64,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "MU": {
         "name": "美光科技",
@@ -235,7 +235,7 @@
         "change_pct": -6.69,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "MSFT": {
         "name": "微软",
@@ -243,7 +243,7 @@
         "change_pct": 5.71,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "GOOGL": {
         "name": "谷歌-A",
@@ -251,7 +251,7 @@
         "change_pct": -1.84,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "META": {
         "name": "Meta Platforms Inc-A",
@@ -259,7 +259,7 @@
         "change_pct": 1.36,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "AMD": {
         "name": "超威半导体",
@@ -267,7 +267,7 @@
         "change_pct": -2.06,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "AVGO": {
         "name": "博通",
@@ -275,7 +275,7 @@
         "change_pct": -3.67,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "INTC": {
         "name": "英特尔",
@@ -283,7 +283,7 @@
         "change_pct": -3.42,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "TSM": {
         "close": null,
@@ -325,7 +325,7 @@
         "change_pct": 1.22,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       }
     },
     "power_leaders": {
@@ -335,7 +335,7 @@
         "change_pct": -3.85,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "ENPH": {
         "name": "Enphase Energy Inc",
@@ -343,7 +343,7 @@
         "change_pct": 0.78,
         "confidence": "✅",
         "source": "东方财富美股API",
-        "fetched_at": "2026-06-29T01:18:45.121Z"
+        "fetched_at": "2026-06-29T01:36:23.696Z"
       },
       "GE": {
         "close": null,
@@ -382,7 +382,7 @@
     "usdcnh": null,
     "confidence": "⚠️",
     "source": "东方财富商品期货API",
-    "fetched_at": "2026-06-29T01:18:45.161Z",
+    "fetched_at": "2026-06-29T01:36:23.739Z",
     "wti_oil": null,
     "gold": null,
     "copper": null,
@@ -392,326 +392,326 @@
     "ai": {
       "sh688041": {
         "name": "海光信息",
-        "close": 347,
-        "change_pct": 0.61,
-        "volume": 0,
+        "close": 358.29,
+        "change_pct": 3.88,
+        "volume": 38295,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sh603019": {
         "name": "中科曙光",
-        "close": 98.99,
-        "change_pct": 0.23,
-        "volume": 0,
+        "close": 98.04,
+        "change_pct": -0.73,
+        "volume": 141017,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sh688256": {
         "name": "寒武纪",
-        "close": 1425.41,
-        "change_pct": -2.24,
-        "volume": 0,
+        "close": 1486.79,
+        "change_pct": 1.97,
+        "volume": 13329,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz300418": {
         "name": "昆仑万维",
-        "close": 38.81,
-        "change_pct": 0.15,
-        "volume": 0,
+        "close": 40.57,
+        "change_pct": 4.7,
+        "volume": 102860,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz002261": {
         "name": "拓维信息",
-        "close": 26.89,
-        "change_pct": 0,
-        "volume": 0,
+        "close": 26.93,
+        "change_pct": 0.15,
+        "volume": 37425,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz000977": {
         "name": "浪潮信息",
-        "close": 63.6,
-        "change_pct": -0.45,
-        "volume": 0,
+        "close": 65.25,
+        "change_pct": 2.13,
+        "volume": 57503,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       }
     },
     "robot": {
       "sz300607": {
         "name": "拓斯达",
-        "close": 39.56,
-        "change_pct": -0.03,
-        "volume": 0,
+        "close": 39.78,
+        "change_pct": 0.53,
+        "volume": 35961,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sh688017": {
         "name": "绿的谐波",
-        "close": 362,
-        "change_pct": -2.02,
-        "volume": 0,
+        "close": 363,
+        "change_pct": -1.75,
+        "volume": 15906,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz002747": {
         "name": "埃斯顿",
-        "close": 33.99,
-        "change_pct": -1.96,
-        "volume": 0,
+        "close": 35.82,
+        "change_pct": 3.32,
+        "volume": 106148,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz300124": {
         "name": "汇川技术",
-        "close": 63,
-        "change_pct": -0.44,
-        "volume": 0,
+        "close": 63.23,
+        "change_pct": -0.08,
+        "volume": 40875,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz300276": {
         "name": "三丰智能",
-        "close": 6.69,
-        "change_pct": -0.15,
-        "volume": 0,
+        "close": 6.61,
+        "change_pct": -1.34,
+        "volume": 39093,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sh603728": {
         "name": "鸣志电器",
-        "close": 55.05,
-        "change_pct": -1.41,
-        "volume": 0,
+        "close": 55.12,
+        "change_pct": -1.29,
+        "volume": 9674,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       }
     },
     "metal": {
       "sh601899": {
         "name": "紫金矿业",
-        "close": 25.4,
-        "change_pct": 1.2,
-        "volume": 0,
+        "close": 25.1,
+        "change_pct": 0,
+        "volume": 265279,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sh600111": {
         "name": "北方稀土",
-        "close": 47.24,
-        "change_pct": -0.04,
-        "volume": 0,
+        "close": 47.02,
+        "change_pct": -0.51,
+        "volume": 69669,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz002466": {
         "name": "天齐锂业",
-        "close": 58.2,
-        "change_pct": -1.22,
-        "volume": 0,
+        "close": 57.29,
+        "change_pct": -2.77,
+        "volume": 77641,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sh603799": {
         "name": "华友钴业",
-        "close": 46.79,
-        "change_pct": 0,
-        "volume": 0,
+        "close": 46.32,
+        "change_pct": -1,
+        "volume": 49953,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.670Z"
       },
       "sz000807": {
         "name": "云铝股份",
-        "close": 22.5,
-        "change_pct": 0.09,
-        "volume": 0,
+        "close": 22.78,
+        "change_pct": 1.33,
+        "volume": 102170,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sh601168": {
         "name": "西部矿业",
-        "close": 26.17,
-        "change_pct": -0.76,
-        "volume": 0,
+        "close": 26.91,
+        "change_pct": 2.05,
+        "volume": 49733,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sz002460": {
         "name": "赣锋锂业",
-        "close": 63.01,
-        "change_pct": -0.58,
-        "volume": 0,
+        "close": 62.39,
+        "change_pct": -1.56,
+        "volume": 55349,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       }
     },
     "power": {
       "sz300750": {
         "name": "宁德时代",
-        "close": 381.01,
-        "change_pct": 0,
-        "volume": 0,
+        "close": 382.26,
+        "change_pct": 0.33,
+        "volume": 34679,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sz002594": {
         "name": "比亚迪",
-        "close": 77.5,
-        "change_pct": -0.9,
-        "volume": 0,
+        "close": 78.6,
+        "change_pct": 0.51,
+        "volume": 64448,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sz300274": {
         "name": "阳光电源",
-        "close": 150.5,
-        "change_pct": -0.36,
-        "volume": 0,
+        "close": 147.05,
+        "change_pct": -2.65,
+        "volume": 134885,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sh601012": {
         "name": "隆基绿能",
-        "close": 12.63,
-        "change_pct": -0.32,
-        "volume": 0,
+        "close": 12.55,
+        "change_pct": -0.95,
+        "volume": 198218,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sh600406": {
         "name": "国电南瑞",
-        "close": 22.8,
-        "change_pct": 0.26,
-        "volume": 0,
+        "close": 22.92,
+        "change_pct": 0.79,
+        "volume": 63873,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sh600089": {
         "name": "特变电工",
-        "close": 22.45,
-        "change_pct": 0,
-        "volume": 0,
+        "close": 22.52,
+        "change_pct": 0.31,
+        "volume": 133505,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       },
       "sh600438": {
         "name": "通威股份",
-        "close": 11.7,
-        "change_pct": -2.17,
-        "volume": 0,
+        "close": 11.93,
+        "change_pct": -0.25,
+        "volume": 90651,
         "confidence": "✅",
         "source": "东方财富行情API",
-        "fetched_at": "2026-06-29T01:18:45.076Z"
+        "fetched_at": "2026-06-29T01:36:23.671Z"
       }
     }
   },
   "sector_indices": {
     "semiconductor": {
       "name": "半导体",
-      "index_value": 3508.22,
-      "change_pct": 0.64,
-      "volume": 22.3,
+      "index_value": 3561.58,
+      "change_pct": 2.17,
+      "volume": 75.66,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "ai_chip": {
       "name": "AI芯片",
-      "index_value": 2068.45,
-      "change_pct": -1.11,
-      "volume": -23.31,
+      "index_value": 2109.53,
+      "change_pct": 0.85,
+      "volume": 17.77,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "computing": {
       "name": "算力概念",
-      "index_value": 1963.49,
-      "change_pct": -0.81,
-      "volume": -16.05,
+      "index_value": 1976.05,
+      "change_pct": -0.18,
+      "volume": -3.49,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "robot": {
       "name": "机器人概念",
-      "index_value": 2071.16,
-      "change_pct": -0.56,
-      "volume": -11.76,
+      "index_value": 2074.07,
+      "change_pct": -0.42,
+      "volume": -8.85,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "nonferrous": {
       "name": "有色金属",
-      "index_value": 28931.79,
-      "change_pct": -0.6,
-      "volume": -175.1,
+      "index_value": 29252.47,
+      "change_pct": 0.5,
+      "volume": 145.58,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "power_equipment": {
       "name": "电力设备",
-      "index_value": 6447.38,
-      "change_pct": -0.28,
-      "volume": -18.31,
+      "index_value": 6437.77,
+      "change_pct": -0.43,
+      "volume": -27.92,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "grid": {
       "name": "电网设备",
-      "index_value": 36773.81,
-      "change_pct": 0.16,
-      "volume": 58.52,
+      "index_value": 36727.57,
+      "change_pct": 0.03,
+      "volume": 12.28,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "solar": {
       "name": "光伏设备",
-      "index_value": 1289.15,
-      "change_pct": -0.88,
-      "volume": -11.41,
+      "index_value": 1293.48,
+      "change_pct": -0.54,
+      "volume": -7.08,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "battery": {
       "name": "锂电池概念",
-      "index_value": 4611.85,
-      "change_pct": -0.48,
-      "volume": -22.05,
+      "index_value": 4618.27,
+      "change_pct": -0.34,
+      "volume": -15.63,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     },
     "rare_earth": {
       "name": "稀土永磁",
-      "index_value": 3732.93,
-      "change_pct": -0.77,
-      "volume": -28.86,
+      "index_value": 3745.97,
+      "change_pct": -0.42,
+      "volume": -15.82,
       "source": "东方财富板块指数API",
-      "fetched_at": "2026-06-29T01:18:45.134Z"
+      "fetched_at": "2026-06-29T01:36:23.698Z"
     }
   },
   "commodity_detail": {
