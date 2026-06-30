@@ -409,7 +409,7 @@ html { scroll-behavior: smooth; }
 <script>
 // 强制刷新检测：如果页面版本与当前日期不匹配，自动刷新
 (function(){
-  var v='2026-06-30-1782803780497';
+  var v='2026-06-30-1782772219786';
   if(localStorage.getItem('briefing_v')!==v){ localStorage.setItem('briefing_v',v); if(!sessionStorage.getItem('loaded')){ sessionStorage.setItem('loaded','1'); location.reload(true); } }
 })();
 </script>
@@ -435,20 +435,20 @@ html { scroll-behavior: smooth; }
     <div class="meta-item"><span class="label">报告日期</span> <span class="value">2026-06-30</span></div>
     <div class="meta-item"><span class="label">覆盖市场</span> <span class="value">A股 / 美股 / 港股 / 外汇 / 大宗商品</span></div>
     <div class="meta-item"><span class="label">数据来源</span> <span class="value">东方财富 / Yahoo Finance / 新浪财经</span></div>
-    <div class="meta-item"><span class="label">更新时间</span> <span class="value" id="renderTime">2026-06-30T07:16:20.497Z</span></div>
+    <div class="meta-item"><span class="label">更新时间</span> <span class="value" id="renderTime">2026-06-29T22:30:19.786Z</span></div>
   </div>
 </header>
 
 <div class="market-snapshot">
   <div class="snap-card cn-idx">
     <div class="snap-label">上证指数</div>
-    <div class="snap-value">4094.4</div>
-    <div class="snap-change"><span class="up">+0.5%</span></div>
+    <div class="snap-value">4073.9</div>
+    <div class="snap-change"><span class="up">+1.16%</span></div>
   </div>
   <div class="snap-card cn-idx">
     <div class="snap-label">科创50</div>
-    <div class="snap-value">2207.86</div>
-    <div class="snap-change"><span class="up">+3.85%</span></div>
+    <div class="snap-value">2126.01</div>
+    <div class="snap-change"><span class="up">+4.61%</span></div>
   </div>
   <div class="snap-card us-idx">
     <div class="snap-label">纳斯达克</div>
@@ -472,313 +472,37 @@ html { scroll-behavior: smooth; }
   </div>
 </div>
 
-<div class="verdict-bar">一句话研判：今日A股科技全面爆发（创业板+2.99%、科创50+3.85%、半导体+6.31%），核心驱动力是隔夜美股科技大涨的情绪传导（纳斯达克+2.07%、特斯拉+8.46%、谷歌+4.82%），但需警惕100只涨停0跌停的极端情绪与宏观数据空白之间的矛盾，短期内追高需谨慎。</div>
+<div class="verdict-bar">今日A股市场数据已更新（2026-06-30）。深度解读待Claude Code生成。</div>
 
 <!-- 今日必知要闻 -->
 
-    <div class="card priority-high">
-      <h2>今日A股科技板块全面大涨，创业板指、科创50领涨 <span class="badge badge-verified">✅已验证</span></h2>
-      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">① 2026年6月30日，上证指数涨0.5%报4094.4点，深证成指涨2.48%报16205.56点，创业板指涨2.99%报4342.71点，科创50涨3.85%报2207.86点。半导体、AI芯片、算力概念等板块指数涨幅居前，涨幅在5.49%-6.31%之间</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">② 科技板块全面上涨直接带动中小盘股和成长股活跃，市场赚钱效应非常强</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">③ 科技股的强势表现会吸引更多资金入场追逐热点（尤其是量化基金和游资），同时带动创业板、科创板相关ETF净值上涨，进一步推动指数走高</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">④ 散户应关注：手中持仓是否与科技主线相关；短期热度高但追涨需谨慎，注意板块内部分化</span></div></div>
-      <div class="term">数据来源：东方财富行情API</div>
-    </div>
-    <div class="card priority-high">
-      <h2>美股纳斯达克指数大涨2.07%，英伟达涨1.27%，谷歌涨4.82%，特斯拉涨8.46% <span class="badge badge-verified">✅已验证</span></h2>
-      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">① 美股隔夜表现强劲：纳斯达克指数涨2.07%报25820.14点，AI龙头英伟达涨1.27%，谷歌大涨4.82%，特斯拉涨8.46%</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">② 美股科技股强势会继续提振全球投资者对科技、AI、新能源车的信心，尤其是特斯拉的大涨直接带动A股机器人相关板块</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">③ A股科技板块（AI芯片、算力、机器人、半导体）今日大涨，很大程度是对隔夜美股科技股情绪的跟涨反应；谷歌上涨尤其利好A股AI应用和云计算方向</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">④ 散户应关注：美股科技股是否持续走强；特斯拉上涨虽利好机器人，但A股已大涨，注意短期回调风险</span></div></div>
-      <div class="term">数据来源：东方财富美股API</div>
-    </div>
-    <div class="card priority-high">
-      <h2>今日A股0只股票跌停，100只股票涨停 <span class="badge badge-verified">✅已验证</span></h2>
-      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">① 今日A股有100只股票涨停，0只股票跌停，市场情绪极度乐观</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">② 全面涨停0跌停意味着市场上几乎没有任何负面情绪，是极端的多头信号</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">③ 这种极端情绪一般出现在政策利好或重大突破后的快速拉升阶段，但也可能是情绪过热的前兆，后续容易引发获利回吐</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">④ 散户应关注：如果明天涨停家数大幅减少（比如回落到50只以下），就是情绪降温的信号，应考虑减仓；同时警惕高位个股的回落风险</span></div></div>
-      <div class="term">数据来源：东方财富行情API</div>
-    </div>
 
 <!-- 宏���与政策 -->
 
-<div class="card priority-high">
-  <h2>宏观与政策解读 <span class="tag tag-red">高优先级</span></h2>
-  <p><strong>中国：</strong>当日宏观经济数据缺失（CPI/PPI/PMI/M2均为月度数据，非发布日）。无政策面新增动态数据。</p>
-  <p style="margin-top:8px"><strong>海外：</strong>美股科技股强劲上涨，纳斯达克+2.07%，英伟达+1.27%，谷歌+4.82%，特斯拉+8.46%。美联储利率数据暂无更新。</p>
-  <div class="conflict-box"><strong>⚠️ 信号矛盾：</strong>⚠️【信号矛盾】 A股今日暴涨（创业板+2.99%，科创50+3.85%）但宏观基本面数据空白，缺乏经济数据支撑；美股科技虽大涨但美联储利率方向未明。当前市场情绪与基本面支撑力度不符，属于情绪驱动型行情，持续性待观察。</div>
-</div>
 
 <!-- 政策与规划 -->
 
-<div class="card priority-high">
-  <h2>政策与规划解读 <span class="tag tag-red">高优先级</span></h2>
-  <p>当日政策面数据缺失（包括产业政策、央行操作等），无法进行政策深度解读。</p>
-  <p style="margin-top:8px"><strong>十五五规划：</strong>❌未验证</p>
-  <p style="margin-top:8px"><strong>金融政策：</strong>❌未验证</p>
-  <p style="margin-top:8px"><strong>产业政策：</strong>❌未验证</p>
-  <p style="margin-top:8px"><strong>监管动态：</strong>❌未验证</p>
-  <p style="margin-top:8px"><strong>重要会议：</strong>❌未验证</p>
-  <div class="conflict-box"><strong>政策影响研判：</strong>无数据，无法分析</div>
-</div>
 
 <!-- 资金面 -->
 
-<div class="card priority-high">
-  <h2>资金面解读 <span class="tag tag-red">高优先级</span></h2>
-  <p>❌未验证（北向资金API请求失败，无当日数据）</p>
-  <p style="margin-top:6px">❌未验证（两融余额API请求失败，无当日数据）</p>
-  <p style="margin-top:6px">❌未验证（央行逆回购/MLF操作数据缺失，需搜索补充）</p>
-  <p style="margin-top:8px;font-weight:600;">资金面综合判断：由于北向资金和两融余额数据均缺失，无法判断当日资金流向。散户需关注后续资金数据公布，验证今日大涨是否有增量资金入场支撑。</p>
-</div>
 
 <!-- 国际市场 -->
 
-<div class="card priority-mid">
-  <h2>国际市场解读 <span class="tag tag-orange">中优先级</span></h2>
-  <p>美股三大指数全线上涨：道琼斯+0.59%，纳斯达克+2.07%，标普500+1.18%。AI龙头英伟达+1.27%，谷歌+4.82%，特斯拉+8.46%，整体科技情绪高涨。</p>
-  <p style="margin-top:6px">❌未验证（美元指数及人民币汇率数据缺失）</p>
-  <p style="margin-top:6px">❌未验证（WTI原油、黄金、铜、铝等大宗商品价格数据缺失）</p>
-  <p style="margin-top:6px">无重大地缘政治事件数据</p>
-</div>
 
 <!-- A股行情 -->
 
-<div class="card priority-mid">
-  <h2>A股行情解读 <span class="tag tag-orange">中优先级</span></h2>
-  <p>上证+0.50%（4094.4），深证+2.48%（16205.56），创业板+2.99%（4342.71），科创50+3.85%（2207.86）。成长风格（创业板、科创板）显著跑赢大盘，科技主导行情。</p>
-  <p style="margin-top:6px">成交量13亿手（未注明成交额，仅注明手数），结合指数涨幅看，量能配合较充分。</p>
-  <p style="margin-top:6px">涨幅前5板块：模拟芯片设计+8.97%、光学元件+7.93%、数字芯片设计+6.85%、分立器件+6.61%、光学光电子+6.42%。跌幅前5板块（实际为涨幅最低）：机器人+6.35%、半导体+6.31%、面板+6.27%、集成电路封测+6.23%、激光设备+5.93%——今日所有板块全面上涨，无下跌板块。</p>
-  <p style="margin-top:6px">涨停100只，跌停0只，市场情绪极度亢奋。</p>
-</div>
 
 <!-- 四个行业深度 -->
 
-    <div class="industry-block">
-      <h2>AI 人工智能板块深度解读</h2>
-      <p>以下均为基于板块数据的个股数据引用，仅作案例说明：海光信息+4.36%，中科曙光涨停+10%，寒武纪+7.66%，浪潮信息+6.35%，拓维信息+4.28%，昆仑万维+1.46%。</p>
-      
-    <div class="table-wrap">
-      <table>
-        <tr><th>海外龙头</th><th>当日涨跌</th><th>垄断地位</th><th>A股映射</th><th>A股涨跌</th><th>映射逻辑</th></tr>
-        
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-      </table>
-    </div>
-      <p style="margin-top:8px"><strong>行业动态：</strong>❌未验证（无当日AI产业新闻数据）</p>
-      
-      
-      
-      
-      <p style="margin-top:8px"><strong>财报关注：</strong>❌未验证（无财报预警数据）</p>
-      <p style="margin-top:8px"><strong>龙虎榜：</strong>❌未验证（龙虎榜数据缺失）</p>
-      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：⚠️分析判断：AI板块今日大涨（AI芯片+5.49%、算力+3.35%、半导体+6.31%）有美股科技强势的情绪支撑（英伟达+1.27%、谷歌+4.82%），A股弹性十足。但单日大涨需警惕情绪过热（100只涨停0只跌停），且缺乏资金数据验证。趋势判断需连续多日观察，目前数据不足。</p>
-    </div>
 
-    <div class="industry-block">
-      <h2>具身智能机器人板块深度解读</h2>
-      <p>以下为个股数据引用，仅作案例说明：拓斯达+7.82%，绿的谐波+15.55%，埃斯顿+9.99%（接近涨停），鸣志电器涨停+10%，三丰智能+4.52%，汇川技术+1.69%。</p>
-      
-    <div class="table-wrap">
-      <table>
-        <tr><th>海外龙头</th><th>当日涨跌</th><th>垄断地位</th><th>A股映射</th><th>A股涨跌</th><th>映射逻辑</th></tr>
-        
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-      </table>
-    </div>
-      
-      <p style="margin-top:8px"><strong>产业政策：</strong>❌未验证（当日机器人产业政策数据缺失）</p>
-      <p style="margin-top:8px"><strong>海外进展：</strong>特斯拉股价大涨8.46%，表明市场对其人形机器人、自动驾驶等业务预期强烈。</p>
-      
-      
-      <p style="margin-top:8px"><strong>财报关注：</strong>❌未验证</p>
-      <p style="margin-top:8px"><strong>龙虎榜：</strong>❌未验证</p>
-      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：⚠️分析判断：机器人板块今日大涨3.19%，核心驱动力是隔夜特斯拉+8.46%的情绪传导，叠加个股（绿的谐波+15.55%、埃斯顿+9.99%、鸣志电器涨停）资金活跃。但板块指数3.19%的涨幅相对半导体6.31%等方向偏弱，说明涨幅主要集中在少数龙头股，板块内部分化。趋势判断需更多数据。</p>
-    </div>
 
-    <div class="industry-block">
-      <h2>有色金属（上游）板块深度解读</h2>
-      <p>以下为个股数据引用，仅作案例说明：北方稀土+0.9%，天齐锂业+2.42%，赣锋锂业+2.08%，华友钴业+1.22%，紫金矿业-2.52%，云铝股份-4.4%，西部矿业-0.62%。</p>
-      
-    <div class="table-wrap">
-      <table>
-        <tr><th>海外龙头</th><th>当日涨跌</th><th>垄断地位</th><th>A股映射</th><th>A股涨跌</th><th>映射逻辑</th></tr>
-        
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-      </table>
-    </div>
-      
-      
-      
-      <p style="margin-top:8px"><strong>商品传导链：</strong>❌未验证（铜、铝、锂、稀土等大宗商品价格数据全部缺失）</p>
-      <p style="margin-top:8px"><strong>供给侧：</strong>❌未验证（无供需数据）</p>
-      <p style="margin-top:8px"><strong>财报关注：</strong>❌未验证</p>
-      <p style="margin-top:8px"><strong>龙虎榜：</strong>❌未验证</p>
-      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：⚠️分析判断：有色金属板块今日仅微涨0.76%，远落后于科技板块。内部分化严重：锂矿（天齐+2.42%、赣锋+2.08%）在雅保大跌8%的背景下逆势上涨，存在显著背离；铜铝（紫金-2.52%、云铝-4.4%）下跌，与FCX-1.88%方向一致。稀土永磁+2.79%受机器人板块走强带动。整体有色板块资金流向分散，无统一主线。</p>
-    </div>
 
-    <div class="industry-block">
-      <h2>电力设备与新能源板块深度解读</h2>
-      <p>以下为个股数据引用，仅作案例说明：宁德时代+0.17%，比亚迪+0.08%，阳光电源+2.17%，隆基绿能+2.42%，通威股份+0.67%，XD国电南-0.35%，特变电工-0.31%。</p>
-      
-    <div class="table-wrap">
-      <table>
-        <tr><th>海外龙头</th><th>当日涨跌</th><th>垄断地位</th><th>A股映射</th><th>A股涨跌</th><th>映射逻辑</th></tr>
-        
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-      </table>
-    </div>
-      <p style="margin-top:8px"><strong>行业动态：</strong>❌未验证</p>
-      
-      
-      
-      
-      <p style="margin-top:8px"><strong>财报关注：</strong>❌未验证</p>
-      <p style="margin-top:8px"><strong>龙虎榜：</strong>❌未验证</p>
-      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：⚠️分析判断：电力设备板块整体温和上涨2.41%，光伏设备+2.86%好于电网设备+1.44%。但宁德时代、比亚迪等新能源车龙头近乎平盘，市场关注点明显更偏向半导体和AI。海外光伏龙头FSLR-2.62%与A股光伏+2.42%形成背离，需警惕A股光伏的跟涨缺乏海外基本面支撑。</p>
-    </div>
 
 <!-- 明日预览 -->
 
-<div class="card priority-ref">
-  <h2>明日提前知道 <span class="tag tag-blue">参考级</span></h2>
-  <p>无宏观经济数据发布计划</p>
-  <p style="margin-top:6px">需关注晚间美股科技股走势是否延续强势，以及是否有美联储官员讲话影响利率预期。</p>
-  <div class="tomorrow-grid">
-    <div class="tomorrow-item"><strong>AI板块</strong>若美股AI龙头（英伟达、谷歌等）今晚继续上涨，A股AI板块或延续强势；若回调，则今日大涨后的获利盘可能涌出。</div>
-    <div class="tomorrow-item"><strong>机器人板块</strong>特斯拉8.46%的大涨是短期情绪锚，但A股机器人已提前反应，明日需谨慎追高。</div>
-    <div class="tomorrow-item"><strong>有色板块</strong>铜铝价格走势不确定，锂矿需关注雅保是否会继续下跌带动A股锂矿转跌。</div>
-    <div class="tomorrow-item"><strong>电力设备板块</strong>光伏设备+2.42%但海外FSLR大跌，明日有回调压力，需观察是否有国内政策利好对冲。</div>
-    <div class="tomorrow-item"><strong>持续跟踪</strong>重点观察：1) 涨停家数是否下降（情绪降温信号）2) 北向资金数据（若后续公布大幅流入则支撑有效）3) 科创50和创业板指能否继续领涨</div>
-  </div>
-</div>
 
 <!-- 市场全景图 -->
-<div class="panorama">今日A股市场呈现典型的"情绪驱动、科技领涨"格局。三大指数中，创业板指（+2.99%）和科创50（+3.85%）大幅跑赢上证指数（+0.50%），表明资金明显偏向成长风格。从板块看，半导体（+6.31%）、模拟芯片设计（+8.97%）等涨幅居前，100只个股涨停、0只跌停说明市场情绪极度亢奋，但这也带来了风险——情绪过热后往往容易出现获利回吐。海外方面，美股纳斯达克+2.07%为A股科技方向提供了情绪锚，特斯拉+8.46%更是直接点燃A股机器人板块。但有色的铜和铝相关个股走弱（紫金-2.52%、云铝-4.4%），说明这轮行情并非全面普涨，而是明显的"科技主导、其他板块跟涨"格局。值得注意的是，北向资金、两融余额、央行操作、大宗商品价格等关键数据今日全部缺失，无法验证这份大涨背后是否有真实的资金流入支撑，这是当前最大的不确定性。</div>
+<div class="panorama">本简报为自动数据驱动版本，包含今日实时行情数据。深度解读（因果链分析、海外映射、政策解读、自检报告）将在Claude Code活跃时补充。</div>
 
 <!-- 自检报告 -->
 
@@ -786,14 +510,14 @@ html { scroll-behavior: smooth; }
       <h3>📋 自检报告</h3>
       <div class="stats">
         <span class="badge badge-verified">✅已验证: 0项</span>
-        <span class="badge badge-single">⚠️单一来源: 1项</span>
+        <span class="badge badge-single">⚠️单一来源: 0项</span>
         <span class="badge badge-fail">❌未验证: 0项</span>
       </div>
-      <p><strong>数据溯源：</strong>所有数据均源于raw_data.json及其标注的API来源（东方财富、Yahoo Finance），未添加任何外部数据</p>
-      <p><strong>数值校验：</strong>上证4094.4（在2500-4500区间）、深证16205.56、创业板4342.71、科创502207.86均在合理范围。美股指数：道琼斯52182.74（合理，约52000），纳斯达克25820.14（合理，约26000），标普5007440.43（合理，约7400）。个股价格（英伟达194.97美元、特斯拉411.84美元等）均符合当前美股价格水平。无数值异常。</p>
-      <p><strong>防伪造校验：</strong>所有数据在raw_data.json中均有依据，未编造任何数值。资金净流向、央行操作等标注'❌未验证'。</p>
-      <p style="color:#c0392b"><strong>⚠️未验证项：</strong>北向资金净流入/流出、两融余额、央行逆回购操作、美元指数/人民币汇率、大宗商品价格（铜/铝/锂/稀土）、宏观月度数据（CPI/PPI/PMI/M2/社融）、美联储利率、产业政策新闻</p>
-      <p style="margin-top:8px"><strong>数据来源：</strong>东方财富行情API (push2.eastmoney.com) | 东方财富美股API | Yahoo Finance API</p>
+      
+      
+      
+      
+      <p style="margin-top:8px"><strong>数据来源：</strong>东方财富API自动采集</p>
     </div>
 
 <!-- 底部 -->
