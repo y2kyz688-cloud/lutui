@@ -423,6 +423,37 @@ async function fetchSectorIndices() {
   return result;
 }
 
+// Yahoo Finance 外汇和大宗商品（GitHub Actions美国服务器可访问）
+async function fetchYahooForexCommodities() {
+  const symbols = {
+    usd_index: 'DX-Y.NYB',    // 美元指数
+    usdcnh: 'CNY=X',           // 美元/离岸人民币
+    gold: 'GC=F',              // 黄金期货
+    oil: 'CL=F',               // WTI原油
+    copper: 'HG=F',            // 铜期货
+  };
+  const result = {};
+  for (const [key, sym] of Object.entries(symbols)) {
+    try {
+      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=2d`;
+      const data = await fetchJsonParsed(url);
+      const meta = data?.chart?.result?.[0]?.meta;
+      if (meta) {
+        result[key] = {
+          price: meta.regularMarketPrice,
+          prev_close: meta.previousClose || meta.chartPreviousClose,
+          change_pct: meta.previousClose ? ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose * 100) : null,
+          source: 'Yahoo Finance',
+          confidence: '✅',
+        };
+      }
+    } catch (e) {
+      result[key] = { price: null, confidence: '❌', reason: 'Yahoo API失败' };
+    }
+  }
+  return result;
+}
+
 function getNewsPlaceholder() {
   return [
     { title: '（新闻事件由AI搜索补充）', source: 'WebSearch', date: today(), summary: '请在AI解读阶段通过搜索补充当日重大财经新闻' },
@@ -498,7 +529,10 @@ async function main() {
     fetchSectorIndices(),
     fetchForex(),
     fetchCommodities(),
+    fetchYahooForexCommodities(),
   ]);
+
+  const yahooFC = arguments[0]?.[14] || {}; // 第15个返回值
 
 
   // 合并美股数据：东方财富优先，Yahoo备用
@@ -565,6 +599,11 @@ async function main() {
     forex_commodity: {
       ...forex,
       ...commodities,
+      ...(yahooFC.usd_index?.price ? { usd_index: yahooFC.usd_index.price, usd_index_src: 'Yahoo Finance', usd_index_conf: '✅' } : {}),
+      ...(yahooFC.usdcnh?.price ? { usdcnh: yahooFC.usdcnh.price, usdcnh_src: 'Yahoo Finance' } : {}),
+      ...(yahooFC.gold?.price ? { gold: yahooFC.gold.price, gold_src: 'Yahoo Finance' } : {}),
+      ...(yahooFC.oil?.price ? { wti_oil: yahooFC.oil.price, oil_src: 'Yahoo Finance' } : {}),
+      ...(yahooFC.copper?.price ? { copper: yahooFC.copper.price, copper_src: 'Yahoo Finance' } : {}),
     },
     industry_a_stock: {
       ai: aiA,
