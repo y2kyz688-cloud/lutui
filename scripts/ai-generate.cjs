@@ -80,18 +80,11 @@ ${methodRules.substring(0, 3000)}
 
 // ====== 3. 构建用户消息 ======
 let newsContext = '';
-if (newsData && newsData.top_headlines && newsData.top_headlines.length > 0) {
-  newsContext = '\n\n## 今日财经新闻（RSS采集）\n';
-  newsContext += newsData.top_headlines.map(n => `- [${n.source}] ${n.title}${n.summary ? ' | ' + n.summary : ''}`).join('\n');
-  if (newsData.categorized) {
-    const cats = newsData.categorized;
-    newsContext += '\n\n### 分类摘要\n';
-    if (cats.macro?.length) newsContext += '**宏观**: ' + cats.macro.slice(0,5).map(n=>n.title).join('; ') + '\n';
-    if (cats.policy?.length) newsContext += '**政策**: ' + cats.policy.slice(0,5).map(n=>n.title).join('; ') + '\n';
-    if (cats.ai?.length) newsContext += '**AI/科技**: ' + cats.ai.slice(0,5).map(n=>n.title).join('; ') + '\n';
-    if (cats.market?.length) newsContext += '**市场**: ' + cats.market.slice(0,5).map(n=>n.title).join('; ') + '\n';
-    if (cats.global?.length) newsContext += '**国际**: ' + cats.global.slice(0,5).map(n=>n.title).join('; ') + '\n';
-  }
+if (newsData?.news_digest) {
+  newsContext = '\n\n' + newsData.news_digest;
+} else if (newsData?.top_headlines?.length > 0) {
+  newsContext = '\n\n## 今日财经新闻\n';
+  newsContext += newsData.top_headlines.map(n => `- [${n.source}] ${n.title}`).join('\n');
 }
 
 const userMessage = `请基于以下真实行情数据${newsData ? '和新闻摘要' : ''}，生成今日财经简报的完整解读JSON。
