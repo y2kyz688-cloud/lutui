@@ -2,9 +2,8 @@ name: Daily Financial Briefing
 
 on:
   schedule:
-    # 北京时间 7:30 = UTC 23:30（前一天）
-    # GitHub Actions cron使用UTC时间
-    - cron: '30 23 * * *'
+    # 北京时间 6:30 = UTC 22:30（前一天）
+    - cron: '30 22 * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,26 +23,13 @@ jobs:
       - name: Fetch market data
         run: node scripts/fetch-data.js
 
-      - name: Generate AI interpretation
+      - name: Generate AI interpretation (DeepSeek)
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          AI_API: claude
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: node scripts/ai-interpret.js
 
-      - name: Render HTML pages
-        run: node scripts/render-html.js
-
-      - name: Update archive index
-        run: node scripts/update-archive.js
-
-      - name: Commit data files
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ dist/ -f
-          git diff --staged --quiet || git commit -m "auto: daily briefing $(date +%Y-%m-%d)"
-          git push
+      - name: Render HTML
+        run: node scripts/render-html.js && node scripts/update-archive.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -51,3 +37,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           keep_files: true
+
+      - name: Save data to main branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add data/ dist/ -f
+          git diff --staged --quiet || git commit -m "auto: daily briefing $(date +%Y-%m-%d)"
+          git push origin main

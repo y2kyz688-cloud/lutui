@@ -174,7 +174,45 @@ ${rawDataJson}
 }
 
 // ============================================================
-// OpenAI API 调用
+// DeepSeek API 调用（兼容OpenAI格式，国内直连）
+// ============================================================
+
+async function callDeepSeekAPI(systemPrompt, rawDataJson) {
+  const apiKey = process.env.DEEPSEEK_API_KEY;
+  if (!apiKey) throw new Error('DEEPSEEK_API_KEY 环境变量未设置');
+
+  const response = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: 'deepseek-chat',
+      max_tokens: 8192,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: `以下是今日采集的全球财经原始数据（raw_data.json），请严格按照System Prompt的要求，生成完整的结构化解读JSON。\n\n<raw_data>\n${rawDataJson}\n</raw_data>` },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`DeepSeek API HTTP ${response.status}: ${errText}`);
+  }
+
+  const data = await response.json();
+  const text = data?.choices?.[0]?.message?.content;
+  if (!text) throw new Error('DeepSeek API返回为空');
+
+  const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) || text.match(/(\{[\s\S]*\})/);
+  const jsonStr = jsonMatch ? jsonMatch[1] : text;
+  return JSON.parse(jsonStr.trim());
+}
+
+// ============================================================
+// OpenAI API 调用（备用）
 // ============================================================
 
 async function callOpenAIAPI(systemPrompt, rawDataJson) {
@@ -239,12 +277,16 @@ async function main() {
   const systemPrompt = readFileSync(promptPath, 'utf-8');
 
   // 选择API
-  const apiChoice = process.env.AI_API || 'claude'; // claude | openai
+  const apiChoice = process.env.AI_API || 'deepseek'; // deepseek | claude | openai
   let interpret;
   let apiUsed = 'fallback';
 
   try {
-    if (apiChoice === 'openai') {
+    if (apiChoice === 'deepseek') {
+      console.log('使用 DeepSeek API...');
+      interpret = await callDeepSeekAPI(systemPrompt, rawDataJson);
+      apiUsed = 'deepseek';
+    } else if (apiChoice === 'openai') {
       console.log('使用 OpenAI API...');
       interpret = await callOpenAIAPI(systemPrompt, rawDataJson);
       apiUsed = 'openai';
