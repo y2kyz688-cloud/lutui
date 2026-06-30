@@ -541,16 +541,8 @@ async function main() {
   const rawData = {
     date,
     generated_at: ts(),
-    macro: getMacroData(),
-    policy: {
-      pboc_mlf: { value: null, note: '按央行操作日程更新', confidence: '❌' },
-      pboc_lpr: { value: null, note: '每月20日更新', confidence: '❌' },
-      pboc_reverse_repo: { value: null, note: '每日更新，需搜索', confidence: '❌' },
-      industry_policy_ai: { value: null, note: '需搜索补充', confidence: '❌' },
-      industry_policy_robot: { value: null, note: '需搜索补充', confidence: '❌' },
-      industry_policy_metals: { value: null, note: '需搜索补充', confidence: '❌' },
-        industry_policy_power: { value: null, note: '需搜索补充', confidence: '❌' },
-    },
+    // 仅包含每日可获取的数据，月度数据(CPI/PMI等)不包含在每日采集中
+    _note: '宏观月度数据(CPI/PPI/PMI/M2/社融)和央行操作(MLF/LPR)为月度发布，不包含在本日度采集中。如当日有发布，请通过news数据补充。',
     capital: {
       northbound,
       margin,
@@ -582,12 +574,10 @@ async function main() {
     },
     sector_indices: sectorIndices,
     commodity_detail: {
-      copper_price: commodities.copper?.close || null,
-      aluminum_price: commodities.aluminum?.close || null,
-      lithium_price: { value: null, note: '需补充锂价数据源', confidence: '❌' },
-      rare_earth_price: { value: null, note: '需补充稀土价格数据源', confidence: '❌' },
+      copper: commodities.copper?.close || null,
+      aluminum: commodities.aluminum?.close || null,
+      _note: '锂/稀土价格需通过news或搜索补充',
     },
-    news_events: getNewsPlaceholder(),
     data_sources: {
       a_stock: '东方财富行情API (push2.eastmoney.com)',
       northbound: '东方财富北向资金API (push2his.eastmoney.com)',
