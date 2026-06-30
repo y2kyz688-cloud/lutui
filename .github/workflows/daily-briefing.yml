@@ -45,5 +45,3 @@ jobs:
           git add data/ dist/ -f
           git diff --staged --quiet || git commit -m "auto: daily briefing $(date +%Y-%m-%d)"
           git push origin main
-deploy: test DeepSeek workflow
-# test
