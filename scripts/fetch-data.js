@@ -514,6 +514,7 @@ async function main() {
     sectorIndices,
     forex,
     commodities,
+    yahooFC,
   ] = await Promise.all([
     fetchAShareIndices(),
     fetchAStockStocks(allAStocks),
@@ -532,7 +533,6 @@ async function main() {
     fetchYahooForexCommodities(),
   ]);
 
-  const yahooFC = arguments[0]?.[14] || {}; // 第15个返回值
 
 
   // 合并美股数据：东方财富优先，Yahoo备用
