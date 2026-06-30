@@ -1,8 +1,8 @@
 name: Daily Financial Briefing
 
 on:
-  # schedule 暂时关闭，由 Claude Code cron 替代
-  # - cron: '30 22 * * *'
+  schedule:
+    - cron: '30 22 * * *'  # 北京时间 6:30 AM（备用）
   workflow_dispatch:
 
 jobs:
