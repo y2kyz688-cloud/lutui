@@ -423,6 +423,41 @@ async function fetchSectorIndices() {
   return result;
 }
 
+// 新浪期货 + 东方财富外汇（国内网络可访问）
+async function fetchSinaFutures() {
+  const codes = { gold: 'hf_GC', oil: 'hf_CL', copper: 'hf_HG', silver: 'hf_SI', london_gold: 'hf_XAU' };
+  const url = 'https://hq.sinajs.cn/list=' + Object.values(codes).join(',');
+  const text = await fetchJson(url, { headers: { Referer: 'https://finance.sina.com.cn' } });
+  const result = {};
+  if (!text) return result;
+  const lines = text.split('\n').filter(l => l.trim());
+  const codeNames = Object.fromEntries(Object.entries(codes).map(([k,v])=>[v,k]));
+  for (const line of lines) {
+    for (const [code, name] of Object.entries(codeNames)) {
+      if (line.includes(code)) {
+        const match = line.match(/="(.+)"/);
+        if (match) {
+          const parts = match[1].split(',');
+          if (parts.length > 0) result[name] = { price: parseFloat(parts[0])||null, source: '新浪期货', confidence: '⚠️' };
+        }
+      }
+    }
+  }
+  return result;
+}
+
+// 东方财富外汇（国内可用）
+async function fetchEastMoneyForex() {
+  const url = 'https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=133.USDCNH&_=' + Date.now();
+  const data = await fetchJsonParsed(url);
+  if (!data?.data?.diff) return {};
+  const result = {};
+  for (const item of data.data.diff) {
+    if (item.f12 === 'USDCNH') result.usdcnh = item.f2;
+  }
+  return result;
+}
+
 // Yahoo Finance 外汇和大宗商品（GitHub Actions美国服务器可访问）
 async function fetchYahooForexCommodities() {
   const symbols = {
