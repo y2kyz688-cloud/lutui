@@ -22,28 +22,32 @@ jobs:
       - name: 1-采集行情数据
         run: node scripts/fetch-data.js
 
-      - name: 2-采集财经新闻
+      - name: 2-补丁数据(期货+外汇)
+        run: node scripts/patch-data.cjs
+        continue-on-error: true
+
+      - name: 3-采集财经新闻
         run: node scripts/fetch-news.js
         continue-on-error: true
 
-      - name: 3-DeepSeek AI生成解读
+      - name: 4-DeepSeek AI生成解读
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: node scripts/ai-generate.cjs
 
-      - name: 4-渲染HTML页面
+      - name: 5-渲染HTML页面
         run: |
           node scripts/render-html.js
           node scripts/update-archive.js
 
-      - name: 5-部署到GitHub Pages
+      - name: 6-部署到GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           keep_files: true
 
-      - name: 6-保存数据到主分支
+      - name: 7-保存数据到主分支
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
