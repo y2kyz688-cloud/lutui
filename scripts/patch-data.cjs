@@ -21,8 +21,10 @@ raw.forex_commodity.copper=await fetchSina('hf_HG')||raw.forex_commodity.copper;
 if(raw.forex_commodity.gold)raw.forex_commodity.gold_src='新浪期货';
 if(raw.forex_commodity.wti_oil)raw.forex_commodity.oil_src='新浪期货';
 if(raw.forex_commodity.copper)raw.forex_commodity.copper_src='新浪期货';
-// 人民币
-try{const r=await fetch('https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=133.USDCNH');const d=await r.json();const cnh=d?.data?.diff?.find(i=>i.f12==='USDCNH');if(cnh?.f2){raw.forex_commodity.usdcnh=cnh.f2;raw.forex_commodity.usdcnh_src='东方财富外汇';}}catch(e){}
+// 人民币(新浪外汇)
+try{const r=await fetch('https://hq.sinajs.cn/list=fx_susdcnh',{headers:{Referer:'https://finance.sina.com.cn'}});const t=await r.text();const m=t.match(/=\"(.+)\"/);if(m){const p=m[1].split(',');if(p.length>0&&p[0].length>3){raw.forex_commodity.usdcnh=parseFloat(p[0])||raw.forex_commodity.usdcnh;raw.forex_commodity.usdcnh_src='新浪外汇';}}}catch(e){}
+// 东财外汇备用
+if(!raw.forex_commodity.usdcnh){try{const r=await fetch('https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=133.USDCNH');const d=await r.json();const cnh=d?.data?.diff?.find(i=>i.f12==='USDCNH');if(cnh?.f2){raw.forex_commodity.usdcnh=cnh.f2;raw.forex_commodity.usdcnh_src='东方财富外汇';}}catch(e){}}
 console.log('黄金:',raw.forex_commodity.gold,'原油:',raw.forex_commodity.wti_oil,'铜:',raw.forex_commodity.copper,'人民币:',raw.forex_commodity.usdcnh);
 fs.writeFileSync(f,JSON.stringify(raw),'utf-8');
 const df=path.join(DATA,'raw_'+date+'.json');
