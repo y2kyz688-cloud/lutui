@@ -25,7 +25,9 @@ if(raw.forex_commodity.copper)raw.forex_commodity.copper_src='新浪期货';
 try{const r=await fetch('https://hq.sinajs.cn/list=fx_susdcnh',{headers:{Referer:'https://finance.sina.com.cn'}});const t=await r.text();const m=t.match(/=\"(.+)\"/);if(m){const p=m[1].split(',');if(p.length>1&&!isNaN(parseFloat(p[1]))){raw.forex_commodity.usdcnh=parseFloat(p[1]);raw.forex_commodity.usdcnh_src='新浪外汇';}}}catch(e){}
 // 东财外汇备用
 if(!raw.forex_commodity.usdcnh){try{const r=await fetch('https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=133.USDCNH');const d=await r.json();const cnh=d?.data?.diff?.find(i=>i.f12==='USDCNH');if(cnh?.f2){raw.forex_commodity.usdcnh=cnh.f2;raw.forex_commodity.usdcnh_src='东方财富外汇';}}catch(e){}}
-console.log('黄金:',raw.forex_commodity.gold,'原油:',raw.forex_commodity.wti_oil,'铜:',raw.forex_commodity.copper,'人民币:',raw.forex_commodity.usdcnh);
+// 美元指数(东财100.UDI，需与A股指数同查)
+try{const r=await fetch('https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f2,f3,f12,f14&secids=1.000001,100.UDI');const d=await r.json();const udi=d?.data?.diff?.find(i=>i.f12==='UDI');if(udi?.f2){raw.forex_commodity.usd_index=udi.f2;raw.forex_commodity.usd_index_src='东方财富全球';}}catch(e){}
+console.log('黄金:',raw.forex_commodity.gold,'原油:',raw.forex_commodity.wti_oil,'铜:',raw.forex_commodity.copper,'人民币:',raw.forex_commodity.usdcnh,'美元:',raw.forex_commodity.usd_index);
 fs.writeFileSync(f,JSON.stringify(raw),'utf-8');
 const df=path.join(DATA,'raw_'+date+'.json');
 fs.writeFileSync(df,JSON.stringify(raw),'utf-8');
