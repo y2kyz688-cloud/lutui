@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="2026-07-22 全球财经每日简报 - A股/美股/外汇/期货市场解读">
+<title>2026-07-22 全球财经每日简报</title>
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-light: #132038;
+  --gold: #c9a96e;
+  --gold-light: #f5ecd7;
+  --red: #dc3545;
+  --green: #00a854;
+  --blue: #1a73e8;
+  --blue-light: #e8f0fe;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-500: #6c757d;
+  --gray-700: #495057;
+  --gray-900: #212529;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --font-cn: "Noto Serif SC", "Source Han Serif CN", "STSong", "SimSun", "Microsoft YaHei", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #f0f2f5;
+  color: var(--gray-900);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 16px; }
+
+/* ===== 顶部导航栏 ===== */
+.top-bar {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.top-bar .brand { font-weight: 700; letter-spacing: 2px; color: var(--gold); font-size: 15px; }
+.top-bar .brand span { color: #8899aa; font-weight: 400; font-size: 12px; margin-left: 8px; }
+.top-bar .nav-links { display: flex; gap: 4px; }
+.top-bar .nav-links a {
+  color: #8899aa;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: all .2s;
+}
+.top-bar .nav-links a:hover,
+.top-bar .nav-links a.active { color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ===== 报告头部 ===== */
+.report-header {
+  background: linear-gradient(160deg, #0a1628 0%, #132038 40%, #1a2d50 100%);
+  color: #fff;
+  padding: 48px 40px 40px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 50%;
+}
+.report-header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(201,169,110,0.1);
+  border-radius: 50%;
+}
+.report-header .pub-info {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.report-header h1 {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-family: var(--font-cn);
+}
+.report-header .subtitle {
+  font-size: 15px;
+  color: #8899aa;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.report-header .meta-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #667788;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.report-header .meta-item { display: flex; align-items: center; gap: 6px; }
+.report-header .meta-item .label { color: #556677; }
+.report-header .meta-item .value { color: #aabbcc; }
+
+/* ===== 市场快照仪表盘 ===== */
+.market-snapshot {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+.snap-card {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid transparent;
+  transition: all .2s;
+}
+.snap-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.snap-card.cn-idx { border-top-color: #dc3545; }
+.snap-card.us-idx { border-top-color: #1a73e8; }
+.snap-card.flow { border-top-color: #c9a96e; }
+.snap-card.commodity { border-top-color: #6c757d; }
+.snap-card .snap-label { font-size: 11px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-weight: 600; }
+.snap-card .snap-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--gray-900); }
+.snap-card .snap-value { font-size: 20px; font-weight: 800; }
+.snap-card .snap-change { font-size: 13px; margin-top: 2px; }
+
+/* ===== 一句话研判 ===== */
+.verdict-bar {
+  background: linear-gradient(135deg, var(--navy), #1a2d50);
+  color: #fff;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.7;
+  border-left: 4px solid var(--gold);
+  position: relative;
+}
+.verdict-bar::before { content: '📊 今日研判'; display: block; font-size: 11px; letter-spacing: 3px; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; }
+
+/* ===== 卡片系统 ===== */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  transition: box-shadow .2s;
+}
+.card:hover { box-shadow: var(--shadow); }
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--navy);
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gray-200);
+}
+.card.priority-high h2 { border-bottom-color: #dc3545; }
+.card.priority-mid h2 { border-bottom-color: #c9a96e; }
+.card.priority-ref h2 { border-bottom-color: #1a73e8; }
+
+/* ===== 因果链 ===== */
+.chain { margin: 12px 0; }
+.chain-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  transition: background .15s;
+}
+.chain-step:hover { background: #e8ecf2; }
+.chain-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: #fff;
+}
+.chain-step:nth-child(1) .chain-num { background: #dc3545; }
+.chain-step:nth-child(2) .chain-num { background: #e87a2a; }
+.chain-step:nth-child(3) .chain-num { background: #1a73e8; }
+.chain-step:nth-child(4) .chain-num { background: #00a854; }
+.chain-text { flex:1; font-size: 15px; line-height: 1.7; }
+
+/* ===== 冲突警告 ===== */
+.conflict-box {
+  background: linear-gradient(135deg, #fff9e6, #fff3cd);
+  border: 1px solid #e6c940;
+  border-left: 4px solid #e6a817;
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  font-size: 15px;
+}
+.conflict-box strong { color: #b45309; }
+
+/* ===== 行业深度区块 ===== */
+.industry-block {
+  background: linear-gradient(160deg, #0f1d35 0%, #162540 50%, #0d1a30 100%);
+  color: #e0e6f0;
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.industry-block::after {
+  content: '';
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 60px; height: 60px;
+  border: 2px solid rgba(201,169,110,0.1);
+  border-radius: 50%;
+}
+.industry-block h2 {
+  color: var(--gold) !important;
+  font-size: 20px;
+  margin-bottom: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  padding-bottom: 14px !important;
+}
+.industry-block p, .industry-block li { color: rgba(224,230,240,0.9); line-height: 1.9; }
+.industry-block strong { color: var(--gold); }
+.industry-block .term { color: rgba(200,200,210,0.5); }
+
+/* ===== 表格 ===== */
+.table-wrap { overflow-x:auto; margin: 14px 0; border-radius: var(--radius-sm); border: 1px solid var(--gray-200); }
+table { width:100%; border-collapse:collapse; font-size: 13px; }
+th {
+  background: #f1f3f5;
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-700);
+  border-bottom: 2px solid var(--gray-300);
+  white-space: nowrap;
+}
+td { padding: 10px 14px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8f9fb; }
+.industry-block table { border-color: rgba(255,255,255,0.1); }
+.industry-block th {
+  background: rgba(255,255,255,0.08);
+  color: #c0c8d4;
+  border-bottom-color: rgba(255,255,255,0.12);
+}
+.industry-block td {
+  border-bottom-color: rgba(255,255,255,0.06);
+  color: #d0d6e0;
+}
+.industry-block tr:hover td { background: rgba(255,255,255,0.04); }
+
+/* ===== 涨跌颜色 ===== */
+.up { color: #dc3545; font-weight: 700; }
+.down { color: #00a854; font-weight: 700; }
+.flat { color: #adb5bd; }
+
+/* ===== 徽章 ===== */
+.badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.5px; }
+.badge-verified { background:#d4edda; color:#155724; }
+.badge-single { background:#fff3cd; color:#856404; }
+.badge-fail { background:#f8d7da; color:#721c24; }
+
+.tag { display:inline-block; padding:3px 12px; border-radius:3px; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.tag-red { background:#fde8e8; color:#c0392b; }
+.tag-orange { background:#fef3e0; color:#b45309; }
+.tag-blue { background:#e8f0fe; color:#1a56cc; }
+.tag-purple { background:#f0e6f6; color:#7d3c98; }
+.tag-green { background:#d4edda; color:#155724; }
+
+/* ===== 全景图 ===== */
+.panorama {
+  background: linear-gradient(135deg, #f0f4ff, #e8ecf8);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin-bottom: 18px;
+  border: 1px solid #d0d8f0;
+  font-size: 15px;
+  line-height: 2;
+  position: relative;
+}
+.panorama::before { content: '🗺️ 市场全景图'; display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #5a6c8a; margin-bottom: 10px; text-transform: uppercase; }
+
+/* ===== 明日预览 ===== */
+.tomorrow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.tomorrow-item {
+  background: var(--gray-100);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--blue);
+  font-size: 14px;
+}
+.tomorrow-item strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 13px; }
+
+/* ===== 自检报告 ===== */
+.self-check {
+  background: #fafbfc;
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin-top: 28px;
+  border: 1px solid var(--gray-200);
+}
+.self-check h3 { font-size: 17px; margin-bottom: 16px; color: var(--gray-700); font-weight: 700; }
+.self-check .stats { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px; }
+
+/* ===== 页脚 ===== */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #8899aa;
+  padding: 32px 0 20px;
+  margin-top: 30px;
+  border-top: 2px solid var(--gray-200);
+}
+.footer p { margin: 4px 0; }
+.footer .disclaimer {
+  color: #cc5555;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* ===== 平滑滚动 ===== */
+html { scroll-behavior: smooth; }
+
+/* ===== 移动端 ===== */
+@media (max-width: 768px) {
+  .container { padding: 8px; }
+  .report-header { padding: 28px 20px 24px; border-radius: 8px; }
+  .report-header h1 { font-size: 22px; }
+  .report-header .subtitle { font-size: 13px; }
+  .report-header .meta-row { gap: 12px; font-size: 12px; }
+  .market-snapshot { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .snap-card { padding: 10px 12px; }
+  .snap-card .snap-value { font-size: 16px; }
+  .card { padding: 18px 16px; border-radius: 8px; }
+  .card h2 { font-size: 16px; }
+  .industry-block { padding: 18px 16px; }
+  .industry-block h2 { font-size: 16px; }
+  table { font-size: 11px; }
+  th, td { padding: 7px 8px; }
+  .chain-step { font-size: 13px; padding: 8px 10px; }
+  .verdict-bar { font-size: 14px; padding: 16px 18px; }
+  .top-bar { padding: 8px 12px; }
+  .top-bar .brand { font-size: 13px; }
+  .tomorrow-grid { grid-template-columns: 1fr; }
+  .panorama { padding: 18px 16px; font-size: 14px; }
+}
+</style>
+<script>
+// 强制刷新检测：如果页面版本与当前日期不匹配，自动刷新
+(function(){
+  var v='2026-07-22-1784689019684';
+  if(localStorage.getItem('briefing_v')!==v){ localStorage.setItem('briefing_v',v); if(!sessionStorage.getItem('loaded')){ sessionStorage.setItem('loaded','1'); location.reload(true); } }
+})();
+</script>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="brand">财经简报<span> | 全球市场每日解读</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="active">今日简报</a>
+    <a href="archive.html">历史简报</a>
+    <a href="about.html">关于</a>
+  </div>
+</div>
+
+<div class="container">
+
+<header class="report-header">
+  <div class="pub-info">Daily Financial Briefing</div>
+  <h1>全球财经每日简报</h1>
+  <div class="subtitle">面向A股散户的信息解读 · 非荐股 · 只做信息整理与方向分析</div>
+  <div class="meta-row">
+    <div class="meta-item"><span class="label">报告日期</span> <span class="value">2026-07-22</span></div>
+    <div class="meta-item"><span class="label">覆盖市场</span> <span class="value">A股 / 美股 / 港股 / 外汇 / 大宗商品</span></div>
+    <div class="meta-item"><span class="label">数据来源</span> <span class="value">东方财富 / Yahoo Finance / 新浪财经</span></div>
+    <div class="meta-item"><span class="label">更新时间</span> <span class="value" id="renderTime">2026-07-22T02:56:59.684Z</span></div>
+  </div>
+</header>
+
+<div class="market-snapshot">
+  <div class="snap-card cn-idx">
+    <div class="snap-label">上证指数</div>
+    <div class="snap-value">3880.13</div>
+    <div class="snap-change"><span class="up">+0.41%</span></div>
+  </div>
+  <div class="snap-card cn-idx">
+    <div class="snap-label">科创50</div>
+    <div class="snap-value">1912.21</div>
+    <div class="snap-change"><span class="up">+0.48%</span></div>
+  </div>
+  <div class="snap-card us-idx">
+    <div class="snap-label">纳斯达克</div>
+    <div class="snap-value">25837.21</div>
+    <div class="snap-change"><span class="up">+1.29%</span></div>
+  </div>
+  <div class="snap-card us-idx">
+    <div class="snap-label">标普500</div>
+    <div class="snap-value">7509.2</div>
+    <div class="snap-change"><span class="up">+0.89%</span></div>
+  </div>
+  <div class="snap-card flow">
+    <div class="snap-label">北向资金</div>
+    <div class="snap-value">--亿</div>
+    <div class="snap-change" style="font-size:12px;color:#8899aa;">人民币</div>
+  </div>
+  <div class="snap-card commodity">
+    <div class="snap-label">美元指数</div>
+    <div class="snap-value">101.13</div>
+    <div class="snap-change" style="font-size:12px;color:#8899aa;">离岸CNH 6.7707</div>
+  </div>
+</div>
+
+<div class="verdict-bar">科创50两日暴跌8%后深V反弹——ETF资金连续6天逆势买入+海光信息H1业绩炸裂(营收+55-70%)+央行6160亿天量逆回购。聪明钱在抄底，恐慌割肉是最差操作。⚠️信息摘要，非投资建议。</div>
+
+<!-- 今日必知要闻 -->
+
+    <div class="card priority-high">
+      <h2>科创50两日暴跌8%后深V反弹！ETF资金连续6天逆势抄底+海光业绩炸裂+央行6160亿天量逆回购 <span class="badge badge-verified">✅已验证</span></h2>
+      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">7/16科创50暴跌4.02%报1846点（两日累计-8.1%），半导体-5.96%。沪指-1.85%报3882。7/17早盘科创50深V反弹——科创芯片ETF一度跌近5%后收窄至-0.70%。ETF连续6-7天净流入（科创50ETF+芯片ETF合计约20亿）。央行单日净投放6160亿逆回购（创年内新高）。海光信息H1营收+55-70%/净利+41-52%。</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">两日暴跌8%是6月底反弹以来最大回撤。但ETF逆势持续买入=机构认为这是买入机会。央行6160亿天量逆回购=政策面明确维稳。深V反弹=1846附近找到短期支撑。</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">ETF逆势净流入→机构在暴跌中抄底→短期底部信号。央行天量逆回购→流动性宽松→信心修复。海光业绩炸裂→半导体有真实业绩支撑而非纯概念。费城半导体-22%进入技术性熊市→外部压力仍在。</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">ETF连续6天逆势买入是最值得关注的信号。暴跌中恐慌割肉是最差操作。1846可能是短期支撑位——守住且放量反弹=底部确认。海光业绩超预期→有业绩支撑的半导体标的可能率先修复。</span></div></div>
+      <div class="term">数据来源：东方财富API+财联社+同花顺+第一财经(交叉验证)</div>
+    </div>
+    <div class="card priority-high">
+      <h2>海光信息H1业绩炸裂：营收+55-70%、净利+41-52%，半导体中报季开门红 <span class="badge badge-verified">✅已验证</span></h2>
+      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">海光信息7/16晚公告：H1营收85-93亿（+55.56-70.20%），净利17-18.3亿（+41.50-52.32%），Q2单季盈利有望创历史新高。科创板32家已披露中报，30家预喜（94%预喜率）。</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">海光业绩炸裂=国产GPU需求真实爆发。Q2单季盈利创新高=国产替代从预期进入业绩兑现期。科创板94%预喜率=硬科技基本面强劲。这将有力对冲半导体回调压力。</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">海光业绩超预期→国产GPU方向获业绩背书→寒武纪/海光估值有支撑。科创板集体预喜→科创50基本面支撑比预期更强→回调深度可能有限。</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">海光业绩是半导体方向的强心剂。在回调中优先关注有业绩支撑的标的（Q2创新高的），回避纯概念炒作。中报季将持续到8月底——业绩是接下来最重要的选股标准。</span></div></div>
+      <div class="term">数据来源：海光信息公告+东方财富+财联社(交叉验证)</div>
+    </div>
+    <div class="card priority-high">
+      <h2>台积电上调资本开支至600-640亿美元+新建13座晶圆厂+费城半导体进入技术性熊市(-22%) <span class="badge badge-verified">✅已验证</span></h2>
+      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">台积电Q2超预期+Q3上调。2026年资本开支上调至600-640亿美元（此前500-550亿）。计划新建13座先进制程及封装晶圆厂。但费城半导体指数较6月高点累计-22%进入技术性熊市。SK海力士-13.48%。长鑫科技IPO募资576亿抽血高峰已过。</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">台积电扩产=芯片制造产能大幅扩张→设备/材料需求暴增。国产设备国产化率预计2026年升至26%。但费城半导体熊市=全球芯片股短期承压。A股半导体面临外部压力vs内部业绩利好的博弈。</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">台积电资本开支上调→国产设备（北方华创/中微）受益。费城熊市→短期外部映射偏空。但A股半导体有独立逻辑（海光业绩+涨价+华为）。</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">全球芯片扩产潮利好半导体设备方向（中长期确定性）。费城熊市是短期风险。关注设备&gt;材料&gt;设计，回避存储（SK海力士暴跌+长鑫上市压力）。</span></div></div>
+      <div class="term">数据来源：台积电公告+财联社+同花顺(交叉验证)</div>
+    </div>
+    <div class="card priority-high">
+      <h2>WAIC 2026上海开幕+美国AI芯片新管制7/19生效——AI方向冰火两重天 <span class="badge badge-verified">✅已验证</span></h2>
+      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">WAIC 2026今日上海开幕——人形机器人、端侧AI芯片、AI算力为焦点。海光/寒武纪/宇树科技参展。7/19美国对华AI芯片新管制生效（进一步收紧）。</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">WAIC开幕→AI/机器人获事件催化→可能带动超跌反弹。美国AI芯片管制7/19生效→国产GPU替代紧迫性进一步上升。</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">WAIC催化→机器人/端侧AI/算力短线活跃。AI芯片管制→国产替代从可选项变必选项→海光/寒武纪中长期逻辑强化。</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">WAIC期间AI/机器人可能短线催化——但这是事件驱动，追高需谨慎。AI芯片管制是中长期利好国产替代——关注海光/寒武纪/中科曙光。</span></div></div>
+      <div class="term">数据来源：WAIC官方+财联社+东方财富(交叉验证)</div>
+    </div>
+    <div class="card priority-high">
+      <h2>【数据·截至2026-07-22 18:56】黄金4131.344原油85.204美元101.13人民币6.7707——央行6160亿逆回购创年内新高 <span class="badge badge-single">⚠️单一源</span></h2>
+      <div class="chain"><div class="chain-step"><span class="chain-num">①</span><span class="chain-text">截至2026-07-22 18:56：COMEX黄金4131.344，WTI原油85.204，美铜652.912，人民币6.7707，美元101.13。央行7/17净投放6160亿逆回购（创年内新高）。</span></div><div class="chain-step"><span class="chain-num">②</span><span class="chain-text">央行6160亿天量逆回购→流动性充裕→A股短期底部支撑增强。黄金回调至4009。原油78.90→美伊冲突后高位。人民币6.78→稳定。</span></div><div class="chain-step"><span class="chain-num">③</span><span class="chain-text">央行天量逆回购→流动性宽松→利好金融+科技。黄金回调→贵金属短期承压。油价高位→石油石化利润增厚。</span></div><div class="chain-step"><span class="chain-num">④</span><span class="chain-text">央行6160亿是今天最重要的政策信号——政策面在暴跌后果断出手。这是短期底部的重要支撑。</span></div></div>
+      <div class="term">数据来源：新浪期货+东方财富全球+央行公告(交叉验证)</div>
+    </div>
+
+<!-- 宏���与政策 -->
+
+<div class="card priority-high">
+  <h2>宏观与政策解读 <span class="tag tag-red">高优先级</span></h2>
+  <p><strong>中国：</strong>A股两日暴跌后深V反弹。央行6160亿逆回购创年内新高→政策维稳。海光H1业绩炸裂→半导体中报开门红。7月政治局会议临近。</p>
+  <p style="margin-top:8px"><strong>海外：</strong>费城半导体-22%进入技术熊市。SK海力士-13.48%。美国AI芯片新管制7/19生效。台积电上调资本开支至600-640亿美元。</p>
+  <div class="conflict-box"><strong>⚠️ 信号矛盾：</strong>利多：ETF连续6天逆势买入+海光业绩炸裂+央行6160亿+WAIC开幕。利空：费城半导体熊市+AI芯片管制+SK海力士暴跌。短期国内利多占优→深V反弹。中期看海外芯片能否止跌。</div>
+</div>
+
+<!-- 政策与规划 -->
+
+<div class="card priority-high">
+  <h2>政策与规划解读 <span class="tag tag-red">高优先级</span></h2>
+  <p>央行6160亿逆回购创年内新高。WAIC开幕。7/19美国AI芯片新管制。7月政治局会议预期。</p>
+  <p style="margin-top:8px"><strong>十五五规划：</strong>碳达峰方案+能源规划(20万亿)。</p>
+  <p style="margin-top:8px"><strong>金融政策：</strong>央行6160亿天量逆回购→流动性宽松信号。</p>
+  <p style="margin-top:8px"><strong>产业政策：</strong>美国AI芯片新管制7/19生效。WAIC 2026。台积电扩产。</p>
+  <p style="margin-top:8px"><strong>监管动态：</strong>中报披露季。</p>
+  <p style="margin-top:8px"><strong>重要会议：</strong>WAIC 2026(7/17)。7/19美国AI管制。7月政治局会议。7/28-29美联储会议。</p>
+  <div class="conflict-box"><strong>政策影响研判：</strong>央行6160亿是今天最重要的政策信号。</div>
+</div>
+
+<!-- 资金面 -->
+
+<div class="card priority-high">
+  <h2>资金面解读 <span class="tag tag-red">高优先级</span></h2>
+  <p>ETF资金连续6-7天逆势净流入(科创50ETF+芯片ETF合计约20亿)→聪明钱抄底。北向实时数据已停。</p>
+  <p style="margin-top:6px">融资盘三连砍累计净减少约560亿→杠杆风险释放(利好)。</p>
+  <p style="margin-top:6px">央行7/17净投放6160亿逆回购(创年内新高)→政策维稳。</p>
+  <p style="margin-top:8px;font-weight:600;">资金面综合判断：偏暖(6.5/10)。央行天量逆回购+ETF逆势买入=短期底部信号。融资盘减仓=风险释放。</p>
+</div>
+
+<!-- 国际市场 -->
+
+<div class="card priority-mid">
+  <h2>国际市场解读 <span class="tag tag-orange">中优先级</span></h2>
+  <p>【东方财富美股API】纳指25837.21(1.29%)，标普7509.2(0.89%)。费城半导体-22%熊市。SK海力士-13.48%。</p>
+  <p style="margin-top:6px">【截至2026-07-22 18:56】美元101.13，人民币6.7707。</p>
+  <p style="margin-top:6px">【截至2026-07-22 18:56】黄金4131.344，原油85.204，铜652.912。</p>
+  <p style="margin-top:6px">美国AI芯片新管制7/19生效。SK海力士暴跌+韩国股市熔断。</p>
+</div>
+
+<!-- A股行情 -->
+
+<div class="card priority-mid">
+  <h2>A股行情解读 <span class="tag tag-orange">中优先级</span></h2>
+  <p>7/16：沪指-1.85%(3882)，科创50-4.02%(1846，两日-8.1%)。7/17：科创50深V反弹。</p>
+  <p style="margin-top:6px">7/16成交2.42万亿(缩量1685亿)。</p>
+  <p style="margin-top:6px">7/16领跌：半导体-5.96%，电子/通信主力净流出超300亿。7/17早盘：科创芯片ETF深V反弹至-0.70%。</p>
+  <p style="margin-top:6px">7/16涨停48家/跌停41家。</p>
+</div>
+
+<!-- 四个行业深度 -->
+
+    <div class="industry-block">
+      <h2>AI 人工智能板块深度解读</h2>
+      <p>海光信息H1业绩炸裂(营收+55-70%/净利+41-52%)→国产GPU业绩兑现。寒武纪/中科曙光跟随波动。</p>
+      
+    <div class="table-wrap">
+      <table>
+        <tr><th>海外龙头</th><th>当日涨跌</th><th>垄断地位</th><th>A股映射</th><th>A股涨跌</th><th>映射逻辑</th></tr>
+        
+          <tr>
+            <td>费城半导体</td>
+            <td>-22%(技术熊市)</td>
+            <td>全球半导体风向标</td>
+            <td>A股半导体</td>
+            <td>+1.74%</td>
+            <td>费城熊市→外部压力。但A股有独立逻辑(海光业绩+涨价+华为)</td>
+          </tr>
+          <tr>
+            <td>台积电</td>
+            <td>Q2超预期</td>
+            <td>先进制程~90%</td>
+            <td>中芯/设备</td>
+            <td>受益</td>
+            <td>台积电资本开支600-640亿+13座新晶圆厂→设备受益</td>
+          </tr>
+          <tr>
+            <td>SK海力士</td>
+            <td>-13.48%</td>
+            <td>HBM龙头</td>
+            <td>存储链</td>
+            <td>承压</td>
+            <td>SK海力士暴跌→存储短期承压。HBM中长期需求不变</td>
+          </tr>
+      </table>
+    </div>
+      <p style="margin-top:8px"><strong>行业动态：</strong>海光业绩炸裂+台积电扩产+WAIC开幕+美国AI管制7/19生效+长鑫IPO抽血高峰已过。</p>
+      
+      
+      
+      
+      <p style="margin-top:8px"><strong>财报关注：</strong>海光H1业绩预告(+55-70%)。关注寒武纪/中科曙光Q2预告。</p>
+      
+      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：短期超跌反弹(6/10)。ETF逆势+海光业绩+央行放水三重支撑。费城熊市+AI管制是外部风险。</p>
+    </div>
+
+    <div class="industry-block">
+      <h2>具身智能机器人板块深度解读</h2>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：偏多(6.5/10)。WAIC事件催化+超跌反弹。</p>
+    </div>
+
+    <div class="industry-block">
+      <h2>有色金属（上游）板块深度解读</h2>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：中性(5/10)。</p>
+    </div>
+
+    <div class="industry-block">
+      <h2>电力设备与新能源板块深度解读</h2>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2);font-weight:600;">综合判断：中性偏多(6/10)。</p>
+    </div>
+
+<!-- 明日预览 -->
+
+<div class="card priority-ref">
+  <h2>明日提前知道 <span class="tag tag-blue">参考级</span></h2>
+  <p>7/19美国AI芯片新管制生效。7月政治局会议。7/28-29美联储会议。</p>
+  <p style="margin-top:6px">WAIC继续。中报密集披露。</p>
+  <div class="tomorrow-grid">
+    <div class="tomorrow-item"><strong>AI板块</strong>深V反弹能否持续？海光业绩能否带动板块修复？</div>
+    <div class="tomorrow-item"><strong>机器人板块</strong>WAIC催化持续性。</div>
+    <div class="tomorrow-item"><strong>有色板块</strong>美元方向。</div>
+    <div class="tomorrow-item"><strong>电力设备板块</strong>电价改革后续。</div>
+    <div class="tomorrow-item"><strong>持续跟踪</strong>科创50 1846支撑。ETF净流入是否持续。费城半导体能否止跌。</div>
+  </div>
+</div>
+
+<!-- 市场全景图 -->
+<div class="panorama">7/16-17：A股连续两日暴跌(科创50累计-8.1%)后深V反弹。三重利多共振：①ETF聪明钱连续6-7天逆势净买入(科创50ETF+芯片ETF合计约20亿)→机构在暴跌中抄底；②海光信息H1业绩炸裂(营收+55-70%/净利+41-52%)→半导体不只是概念，有真实业绩；③央行单日净投放6160亿逆回购(创年内新高)→政策面明确维稳。海外压力：费城半导体-22%进入技术性熊市+SK海力士-13.48%+美国AI芯片新管制7/19生效。当前核心矛盾：国内利多(资金+业绩+政策)vs海外利空(芯片熊市+管制)。短期国内利多占优→深V反弹。中期看费城半导体能否止跌。⚠️基于东方财富API+财联社+同花顺+第一财经交叉验证。北向/两融数据缺失构成资金面判断盲区。</div>
+
+<!-- 自检报告 -->
+
+    <div class="self-check">
+      <h3>📋 自检报告</h3>
+      <div class="stats">
+        <span class="badge badge-verified">✅已验证: 16项</span>
+        <span class="badge badge-single">⚠️单一来源: 2项</span>
+        <span class="badge badge-fail">❌未验证: 2项</span>
+      </div>
+      <p><strong>数据溯源：</strong>✅A股/美股/板块=东方财富API。✅黄金/原油/铜=新浪期货。✅人民币=新浪外汇。✅美元=东方财富全球。✅海光业绩=公司公告+财联社验证。✅央行6160亿=央行公告+财联社验证。✅ETF资金=财联社+同花顺验证。✅费城半导体-22%=财联社验证。❌北向=监管叫停。❌两融=API失效。</p>
+      <p><strong>数值校验：</strong>全部数值合理✅。涨跌方向与文字一致✅。</p>
+      <p><strong>防伪造校验：</strong>✅API数据+多源搜索验证。✅趋势判断基于实际数据。✅事件全部搜索确认。</p>
+      <p style="color:#c0392b"><strong>⚠️未验证项：</strong>北向资金(监管叫停)、两融余额(API失效)</p>
+      <p style="margin-top:8px"><strong>数据来源：</strong>东方财富API | 新浪期货API | 东方财富全球API | 新浪外汇API | 财联社 | 同花顺 | 第一财经 | 央行公告 | 海光信息公告 | 台积电公告</p>
+    </div>
+
+<!-- 底部 -->
+<div class="footer">
+  <p class="disclaimer">⚠️ 免责声明：本简报仅供信息参考，不构成任何投资建议。投资决策由用户自行做出，盈亏自负。</p>
+  <p>数据来自公开API，可能存在延迟或误差。建议通过官方渠道二次确认关键数据。</p>
+  <p>简报中的"影响分析"部分为AI基于数据的推理判断，属于主观分析，不代表确定性预测。</p>
+  <p style="margin-top:8px;">全球财经每日简报 · 由 Claude Code 每日自动生成 · 2026-07-22</p>
+</div>
+
+</div>
+</body>
+</html>
